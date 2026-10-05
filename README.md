@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DrakesCraft-Labs/DrakesBosses/main/banner.svg" width="100%" alt="DRAKES BOSSES animated banner" />
+  <img src="https://raw.githubusercontent.com/SlimefunNewHorizons/DrakesBosses/main/banner.svg" width="100%" alt="DRAKES BOSSES animated banner" />
 </p>
 
 # DrakesBosses
@@ -141,6 +141,6 @@ Infinity armor counter.
 
 ## 📄 License & Intellectual Property
 
-Copyright © 2026 [**JackStar6677-1**](https://github.com/JackStar6677-1) · [**DrakesCraft Labs**](https://github.com/DrakesCraft-Labs). All Rights Reserved.
+Copyright © 2026 [**JackStar6677-1**](https://github.com/JackStar6677-1) · [**DrakesCraft Labs**](https://github.com/SlimefunNewHorizons). All Rights Reserved.
 
 This software is **Source-Available** for public inspection and technical audit. Redistribution, commercial repackaging, or unauthorized derivative distribution without explicit written permission from the author is strictly prohibited.
