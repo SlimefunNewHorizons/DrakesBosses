@@ -21,7 +21,7 @@ import java.util.*;
 
 public final class BossMenu implements Listener, InventoryHolder {
 
-    private static final String GUI_TITLE = ChatColor.translateAlternateColorCodes('&', "&8&l⚡ &6&lARENAS DE JEFES &8&l⚡");
+    private static final String GUI_TITLE = ChatColor.translateAlternateColorCodes('&', "&8&l⚡ &6&lBOSS ARENAS &8&l⚡");
     private final DrakesBosses plugin;
     private final BossArenaService arenaService;
     private final Inventory inventory;
@@ -38,67 +38,67 @@ public final class BossMenu implements Listener, InventoryHolder {
     ) {}
 
     private static final List<BossEntry> BOSS_ENTRIES = List.of(
-            // Tier 1: Inicial / Héroes
-            new BossEntry("circe", "&d&lCirce la Hechicera", Material.BREWING_STAND, 1,
-                    "&a★☆☆☆☆ &7(Fácil)", "1,200", "Pociones Arcanas, Oro, Slimefun", "Maestra de pociones y maldiciones arcanas."),
-            new BossEntry("polifemo", "&2&lPolifemo el Cíclope", Material.ZOMBIE_HEAD, 3,
-                    "&a★☆☆☆☆ &7(Fácil)", "1,500", "Carne Mítica, Minerales, Dragmas", "Gigante de un solo ojo con fuerza bruta aplastante."),
+            // Tier 1: Starter / Heroes
+            new BossEntry("circe", "&d&lCirce the Sorceress", Material.BREWING_STAND, 1,
+                    "&a★☆☆☆☆ &7(Easy)", "1,200", "Arcane Potions, Gold, Slimefun", "Mistress of potions and arcane curses."),
+            new BossEntry("polifemo", "&2&lPolyphemus the Cyclops", Material.ZOMBIE_HEAD, 3,
+                    "&a★☆☆☆☆ &7(Easy)", "1,500", "Mythic Meat, Ores, Dragmas", "One-eyed giant with crushing brute strength."),
             new BossEntry("jax", "&7&lAjax / Jax", Material.IRON_BLOCK, 5,
-                    "&a★☆☆☆☆ &7(Fácil)", "1,800", "Hierro Refinado, Núcleos, Exp", "Autómata de guerra impenetrable de la antigüedad."),
-            new BossEntry("dios_corrupto", "&5&lDios Corrupto", Material.WITHER_ROSE, 7,
-                    "&e★★☆☆☆ &7(Normal)", "2,500", "Esencias Oscuras, Polvo Cósmico", "Antigua deidad consumida por la corrupción abisal."),
+                    "&a★☆☆☆☆ &7(Easy)", "1,800", "Refined Iron, Cores, XP", "Impenetrable war automaton of antiquity."),
+            new BossEntry("dios_corrupto", "&5&lCorrupted God", Material.WITHER_ROSE, 7,
+                    "&e★★☆☆☆ &7(Normal)", "2,500", "Dark Essences, Cosmic Dust", "Ancient deity consumed by abyssal corruption."),
 
-            // Tier 2: Dioses Olímpicos
-            new BossEntry("ares", "&c&lAres - Dios de la Guerra", Material.NETHERITE_SWORD, 10,
-                    "&e★★☆☆☆ &7(Normal)", "3,500", "Espadas Legendarias, Lingotes, Dragmas", "Furia incansable y combate cuerpo a cuerpo feroz."),
-            new BossEntry("poseidon", "&b&lPoseidón - Rey de los Mares", Material.TRIDENT, 12,
-                    "&e★★☆☆☆ &7(Normal)", "4,000", "Tridentes Míticos, Corazón de Mar, XP", "Control absoluto sobre las mareas y tormentas marinas."),
-            new BossEntry("loki", "&a&lLoki - Dios del Engaño", Material.ENDER_EYE, 14,
-                    "&6★★★☆☆ &7(Desafiante)", "4,200", "Ilusiones, Esmeraldas, Runas", "Clones engañosos, teleportaciones y trucos mortales."),
-            new BossEntry("zeus", "&e&lZeus - Rey del Olimpo", Material.LIGHTNING_ROD, 16,
-                    "&6★★★☆☆ &7(Desafiante)", "5,000", "Rayos Divinos, Foco Arcano, Dragmas", "Señor de los cielos y los relámpagos devastadores."),
+            // Tier 2: Olympian Gods
+            new BossEntry("ares", "&c&lAres - God of War", Material.NETHERITE_SWORD, 10,
+                    "&e★★☆☆☆ &7(Normal)", "3,500", "Legendary Swords, Ingots, Dragmas", "Relentless fury and ferocious melee combat."),
+            new BossEntry("poseidon", "&b&lPoseidon - King of the Seas", Material.TRIDENT, 12,
+                    "&e★★☆☆☆ &7(Normal)", "4,000", "Mythic Tridents, Heart of the Sea, XP", "Absolute command over tides and sea storms."),
+            new BossEntry("loki", "&a&lLoki - God of Deceit", Material.ENDER_EYE, 14,
+                    "&6★★★☆☆ &7(Challenging)", "4,200", "Illusions, Emeralds, Runes", "Deceptive clones, teleports and deadly tricks."),
+            new BossEntry("zeus", "&e&lZeus - King of Olympus", Material.LIGHTNING_ROD, 16,
+                    "&6★★★☆☆ &7(Challenging)", "5,000", "Divine Bolts, Arcane Focus, Dragmas", "Lord of the skies and devastating lightning."),
 
-            // Tier 3: Mitología Nórdica y Bestias
-            new BossEntry("hades", "&8&lHades - Señor del Inframundo", Material.SOUL_LANTERN, 19,
-                    "&6★★★☆☆ &7(Desafiante)", "4,800", "Huesos Titánicos, Almas, Slimefun", "Comandante de las almas errantes del inframundo."),
-            new BossEntry("thor", "&9&lThor - Dios del Trueno", Material.NETHERITE_AXE, 20,
-                    "&6★★★☆☆ &7(Desafiante)", "5,500", "Mjölnir Shards, Hierro Puro, Rayos", "Poder atronador que sacude la tierra a su paso."),
-            new BossEntry("heimdall", "&f&lHeimdall - Guardián de Bifröst", Material.SHIELD, 21,
-                    "&6★★★☆☆ &7(Desafiante)", "5,200", "Escudos Divinos, Ojos de Vigía", "El centinela que todo lo ve y nada deja pasar."),
-            new BossEntry("hidra", "&2&lHidra de Lerna", Material.POISONOUS_POTATO, 22,
-                    "&c★★★★☆ &7(Difícil)", "6,000", "Veneno Puro, Escamas Legendarias", "Bestia policéfala cuyo veneno derrite armaduras."),
-            new BossEntry("cerbero", "&4&lCerbero - Guardián Abisal", Material.FIRE_CHARGE, 23,
-                    "&c★★★★☆ &7(Difícil)", "6,200", "Fuego Infernal, Piel de Magma", "El can de tres cabezas que escupe fuego abisal."),
-            new BossEntry("artemisa", "&a&lArtemisa - Diosa de la Caza", Material.BOW, 24,
-                    "&c★★★★☆ &7(Difícil)", "5,800", "Flechas Lunares, Arcos Sagrados", "Puntería milimétrica y flechas de luz celestial."),
-            new BossEntry("prometeo", "&6&lPrometeo - Portador del Fuego", Material.BLAZE_ROD, 25,
-                    "&c★★★★☆ &7(Difícil)", "6,500", "Llama Primordial, Ceniza Cósmica", "El titán rebelde que desafió a los dioses con fuego."),
+            // Tier 3: Norse Mythology and Beasts
+            new BossEntry("hades", "&8&lHades - Lord of the Underworld", Material.SOUL_LANTERN, 19,
+                    "&6★★★☆☆ &7(Challenging)", "4,800", "Titanic Bones, Souls, Slimefun", "Commander of the wandering souls of the underworld."),
+            new BossEntry("thor", "&9&lThor - God of Thunder", Material.NETHERITE_AXE, 20,
+                    "&6★★★☆☆ &7(Challenging)", "5,500", "Mjölnir Shards, Pure Iron, Bolts", "Thunderous power that shakes the earth."),
+            new BossEntry("heimdall", "&f&lHeimdall - Guardian of Bifröst", Material.SHIELD, 21,
+                    "&6★★★☆☆ &7(Challenging)", "5,200", "Divine Shields, Watcher Eyes", "The sentinel who sees everything and lets nothing pass."),
+            new BossEntry("hidra", "&2&lLernaean Hydra", Material.POISONOUS_POTATO, 22,
+                    "&c★★★★☆ &7(Hard)", "6,000", "Pure Venom, Legendary Scales", "Many-headed beast whose venom melts armor."),
+            new BossEntry("cerbero", "&4&lCerberus - Abyssal Guardian", Material.FIRE_CHARGE, 23,
+                    "&c★★★★☆ &7(Hard)", "6,200", "Hellfire, Magma Hide", "The three-headed hound that spits abyssal fire."),
+            new BossEntry("artemisa", "&a&lArtemis - Goddess of the Hunt", Material.BOW, 24,
+                    "&c★★★★☆ &7(Hard)", "5,800", "Lunar Arrows, Sacred Bows", "Pinpoint aim and arrows of celestial light."),
+            new BossEntry("prometeo", "&6&lPrometheus - Bringer of Fire", Material.BLAZE_ROD, 25,
+                    "&c★★★★☆ &7(Hard)", "6,500", "Primordial Flame, Cosmic Ash", "The rebel titan who defied the gods with fire."),
 
-            // Tier 4: Dioses Egipcios y Míticos Extremos
-            new BossEntry("ra", "&e&lRa - Dios del Sol", Material.SUNFLOWER, 28,
-                    "&c★★★★☆ &7(Mítico)", "7,500", "Oro Solar, Destello Divino, Dragmas", "El disco solar que calcina cualquier armadura impura."),
-            new BossEntry("isis", "&d&lIsis - Reina de la Magia", Material.FEATHER, 29,
-                    "&c★★★★☆ &7(Mítico)", "7,000", "Velo de la Vida, Magia Sagrada", "Hechicera suprema con artes de resurrección y curación."),
-            new BossEntry("anubis", "&8&lAnubis - Juez de las Almas", Material.BONE, 30,
-                    "&c★★★★☆ &7(Mítico)", "7,500", "Balanza de Osiris, Necromancia", "Pesa tu corazón contra la pluma de la verdad."),
-            new BossEntry("set", "&6&lSet - Señor del Caos", Material.REDSTONE_BLOCK, 31,
-                    "&c★★★★☆ &7(Mítico)", "7,800", "Arena Sangrienta, Fragmento del Caos", "Dios de las tormentas de arena y la traición."),
-            new BossEntry("odin", "&9&lOdín - El Padre de Todos", Material.SPECTRAL_ARROW, 32,
-                    "&4★★★★★ &7(Extremo)", "8,500", "Lanza Gungnir, Runas de Sabiduría", "El rey de Asgard, amo del conocimiento y la batalla."),
-            new BossEntry("kratos", "&c&lKratos - El Fantasma de Esparta", Material.NETHERITE_INGOT, 33,
-                    "&4★★★★★ &7(Extremo)", "9,000", "Hojas del Caos, Furia Espartana", "El asesino de dioses consumido por la venganza."),
-            new BossEntry("coloso_end", "&5&lColoso del End", Material.END_STONE, 34,
-                    "&4★★★★★ &7(Extremo)", "8,000", "Piedras del Vacío, Perlas Resonantes", "Gigante pétreo imbuido con la energía del Fin."),
+            // Tier 4: Egyptian Gods and Extreme Mythics
+            new BossEntry("ra", "&e&lRa - God of the Sun", Material.SUNFLOWER, 28,
+                    "&c★★★★☆ &7(Mythic)", "7,500", "Solar Gold, Divine Flash, Dragmas", "The sun disk that scorches any impure armor."),
+            new BossEntry("isis", "&d&lIsis - Queen of Magic", Material.FEATHER, 29,
+                    "&c★★★★☆ &7(Mythic)", "7,000", "Veil of Life, Sacred Magic", "Supreme sorceress of resurrection and healing arts."),
+            new BossEntry("anubis", "&8&lAnubis - Judge of Souls", Material.BONE, 30,
+                    "&c★★★★☆ &7(Mythic)", "7,500", "Scale of Osiris, Necromancy", "Weighs your heart against the feather of truth."),
+            new BossEntry("set", "&6&lSet - Lord of Chaos", Material.REDSTONE_BLOCK, 31,
+                    "&c★★★★☆ &7(Mythic)", "7,800", "Bloody Sand, Chaos Fragment", "God of sandstorms and betrayal."),
+            new BossEntry("odin", "&9&lOdin - The All-Father", Material.SPECTRAL_ARROW, 32,
+                    "&4★★★★★ &7(Extreme)", "8,500", "Spear Gungnir, Runes of Wisdom", "King of Asgard, master of knowledge and battle."),
+            new BossEntry("kratos", "&c&lKratos - The Ghost of Sparta", Material.NETHERITE_INGOT, 33,
+                    "&4★★★★★ &7(Extreme)", "9,000", "Blades of Chaos, Spartan Rage", "The godslayer consumed by vengeance."),
+            new BossEntry("coloso_end", "&5&lEnd Colossus", Material.END_STONE, 34,
+                    "&4★★★★★ &7(Extreme)", "8,000", "Void Stones, Resonant Pearls", "Stone giant imbued with the energy of the End."),
 
-            // Tier 5: Cataclismos y Final Bosses
-            new BossEntry("tifon", "&4&lTifón - Padre de los Monstruos", Material.MAGMA_BLOCK, 38,
-                    "&4★★★★★ &7(Cataclismo)", "12,000", "Lava Cósmica, Escamas de Tifón", "La tempestad más mortífera creada contra el Olimpo."),
-            new BossEntry("dragon", "&5&lDragón Ancestral", Material.DRAGON_HEAD, 40,
-                    "&5★★★★★ &7(Legendario)", "15,000", "Aliento Puro, Huevos de Dragón, SF", "El primer dragón que moldeó las dimensiones vacías."),
+            // Tier 5: Cataclysms and Final Bosses
+            new BossEntry("tifon", "&4&lTyphon - Father of Monsters", Material.MAGMA_BLOCK, 38,
+                    "&4★★★★★ &7(Cataclysm)", "12,000", "Cosmic Lava, Typhon Scales", "The deadliest tempest ever raised against Olympus."),
+            new BossEntry("dragon", "&5&lAncient Dragon", Material.DRAGON_HEAD, 40,
+                    "&5★★★★★ &7(Legendary)", "15,000", "Pure Breath, Dragon Eggs, SF", "The first dragon, who shaped the empty dimensions."),
             new BossEntry("wither_storm", "&0&lWither Storm", Material.NETHER_STAR, 42,
-                    "&5★★★★★ &7(Apocalipsis)", "25,000", "Estrellas del Vacío, Rayo Tractor", "La masa devoradora de mundos con rayo de tracción."),
-            new BossEntry("garou", "&1&lGarou Cósmico", Material.BEACON, 44,
-                    "&5★★★★★ &7(Dios Supremo)", "35,000", "Modo Despertar, Esencia Cósmica", "El terror absoluto que copia cualquier arte marcial.")
+                    "&5★★★★★ &7(Apocalypse)", "25,000", "Void Stars, Tractor Beam", "The world-devouring mass with a tractor beam."),
+            new BossEntry("garou", "&1&lCosmic Garou", Material.BEACON, 44,
+                    "&5★★★★★ &7(Supreme God)", "35,000", "Awakened Mode, Cosmic Essence", "The absolute terror that copies any martial art.")
     );
 
     public BossMenu(DrakesBosses plugin, BossArenaService arenaService) {
@@ -119,7 +119,7 @@ public final class BossMenu implements Listener, InventoryHolder {
     }
 
     private void populateInventory() {
-        // Marco de cristal
+        // Glass frame
         ItemStack borderGlass = createItem(Material.GRAY_STAINED_GLASS_PANE, " ");
         ItemStack darkGlass = createItem(Material.BLACK_STAINED_GLASS_PANE, " ");
 
@@ -134,39 +134,39 @@ public final class BossMenu implements Listener, InventoryHolder {
             List<String> lore = new ArrayList<>();
             lore.add(ChatColor.translateAlternateColorCodes('&', "&8» " + entry.description()));
             lore.add("");
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&7Dificultad: " + entry.difficulty()));
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&c❤ Vida Estimada: &f" + entry.health() + " HP"));
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&e✦ Recompensas: &f" + entry.rewards()));
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&6💰 Costo Entrada: &e" + formattedFee + " Dragmas"));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&7Difficulty: " + entry.difficulty()));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&c❤ Estimated Health: &f" + entry.health() + " HP"));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&e✦ Rewards: &f" + entry.rewards()));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&6💰 Entry Fee: &e" + formattedFee + " Dragmas"));
             lore.add("");
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&a▶ Clic Izquierdo: &fDesafiar en Solitario"));
-            lore.add(ChatColor.translateAlternateColorCodes('&', "&e▶ Clic Derecho: &fVer info de Grupo"));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&a▶ Left Click: &fChallenge Solo"));
+            lore.add(ChatColor.translateAlternateColorCodes('&', "&e▶ Right Click: &fGroup Info"));
 
             ItemStack item = createItem(entry.icon(), ChatColor.translateAlternateColorCodes('&', entry.displayName()), lore);
             inventory.setItem(entry.slot(), item);
         }
 
-        // Barra inferior
-        ItemStack infoItem = createItem(Material.BOOK, ChatColor.translateAlternateColorCodes('&', "&6&lℹ INFORMACIÓN DE LAS ARENAS"), List.of(
-                ChatColor.translateAlternateColorCodes('&', "&7Las arenas de jefes son dimensiones aisladas"),
-                ChatColor.translateAlternateColorCodes('&', "&7y protegidas dentro de &fboss_arena&7."),
+        // Bottom bar
+        ItemStack infoItem = createItem(Material.BOOK, ChatColor.translateAlternateColorCodes('&', "&6&lℹ ARENA INFORMATION"), List.of(
+                ChatColor.translateAlternateColorCodes('&', "&7Boss arenas are isolated, protected"),
+                ChatColor.translateAlternateColorCodes('&', "&7dimensions inside &fboss_arena&7."),
                 "",
-                ChatColor.translateAlternateColorCodes('&', "&f• No hay riesgo de interferencia ni pérdidas por grief."),
-                ChatColor.translateAlternateColorCodes('&', "&f• Al vencer al jefe, las recompensas caen al suelo."),
-                ChatColor.translateAlternateColorCodes('&', "&f• Si mueres, reapareces de forma segura."),
-                ChatColor.translateAlternateColorCodes('&', "&f• En grupo: &e/bosswarp <jefe> grupo <amigo1> <amigo2>")
+                ChatColor.translateAlternateColorCodes('&', "&f• No interference and no grief losses."),
+                ChatColor.translateAlternateColorCodes('&', "&f• When the boss falls, rewards drop on the ground."),
+                ChatColor.translateAlternateColorCodes('&', "&f• If you die, you respawn safely."),
+                ChatColor.translateAlternateColorCodes('&', "&f• Group run: &e/bosswarp <boss> grupo <friend1> <friend2>")
         ));
         inventory.setItem(48, infoItem);
 
-        ItemStack closeItem = createItem(Material.BARRIER, ChatColor.translateAlternateColorCodes('&', "&c&lCerrar Menú"), List.of(
-                ChatColor.translateAlternateColorCodes('&', "&7Haz clic para salir.")
+        ItemStack closeItem = createItem(Material.BARRIER, ChatColor.translateAlternateColorCodes('&', "&c&lClose Menu"), List.of(
+                ChatColor.translateAlternateColorCodes('&', "&7Click to exit.")
         ));
         inventory.setItem(49, closeItem);
 
-        ItemStack spectateItem = createItem(Material.SPYGLASS, ChatColor.translateAlternateColorCodes('&', "&b&lModo Espectador"), List.of(
-                ChatColor.translateAlternateColorCodes('&', "&7¿Quieres ver la batalla de un amigo?"),
+        ItemStack spectateItem = createItem(Material.SPYGLASS, ChatColor.translateAlternateColorCodes('&', "&b&lSpectator Mode"), List.of(
+                ChatColor.translateAlternateColorCodes('&', "&7Want to watch a friend's battle?"),
                 "",
-                ChatColor.translateAlternateColorCodes('&', "&eUsa: &f/bosswarp spectate <jugador>")
+                ChatColor.translateAlternateColorCodes('&', "&eUse: &f/bosswarp spectate <player>")
         ));
         inventory.setItem(50, spectateItem);
     }
@@ -213,16 +213,16 @@ public final class BossMenu implements Listener, InventoryHolder {
                 if (event.isRightClick()) {
                     player.closeInventory();
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            "&6[BossArena] &ePara desafiar a " + entry.displayName() + " &een grupo, usa:"));
+                            "&6[BossArena] &eTo challenge " + entry.displayName() + " &ewith a group, use:"));
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            "&f/bosswarp " + entry.id() + " grupo <jugador1> <jugador2>..."));
+                            "&f/bosswarp " + entry.id() + " grupo <player1> <player2>..."));
                     return;
                 }
 
-                // Clic izquierdo: Solitario
+                // Left click: solo
                 player.closeInventory();
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&6[BossArena] &eIniciando arena solitaria contra " + entry.displayName() + "&e..."));
+                        "&6[BossArena] &eStarting a solo arena against " + entry.displayName() + "&e..."));
 
                 var result = arenaService.start(entry.id(), Set.of(player), false);
                 if (!result.started()) {
@@ -232,7 +232,7 @@ public final class BossMenu implements Listener, InventoryHolder {
                 } else {
                     if (result.feePerPlayer() > 0.0D) {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                                "&6[BossArena] &eEntrada cobrada: &6" + String.format(Locale.ROOT, "%,.0f", result.feePerPlayer())
+                                "&6[BossArena] &eEntry fee charged: &6" + String.format(Locale.ROOT, "%,.0f", result.feePerPlayer())
                                         + " Dragmas&e."));
                     }
                     player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 1.0f);
