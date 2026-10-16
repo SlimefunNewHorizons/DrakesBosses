@@ -47,6 +47,6 @@ public class SpartanSummonSkill implements BossSkill {
             }
         }
 
-        target.sendMessage("§c§l¡Ares ha invocado Soldados Espartanos para defenderlo!");
+        target.sendMessage("§c§lAres has summoned Spartan Soldiers to defend him!");
     }
 }

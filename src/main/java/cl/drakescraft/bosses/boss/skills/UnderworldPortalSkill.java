@@ -42,6 +42,6 @@ public class UnderworldPortalSkill implements BossSkill {
             }
         }
 
-        target.sendMessage("§5§l¡Hades abre un portal al Inframundo! Varios espectros emergen...");
+        target.sendMessage("§5§lHades opens a portal to the Underworld! Several spectres emerge...");
     }
 }

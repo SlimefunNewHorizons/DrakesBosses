@@ -91,7 +91,7 @@ public final class JaxDisplayBoss extends OdysseyBoss {
     }
 
     private void charge(Player target) {
-        announceAttack("Embate fracturado");
+        announceAttack("Fractured assault");
         Location from = entity.getLocation();
         Vector direction = target.getLocation().toVector().subtract(from.toVector()).setY(0.0D);
         if (direction.lengthSquared() < 0.04D) {

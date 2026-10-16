@@ -28,7 +28,7 @@ public class OdinBoss extends OdysseyBoss {
     private static final String ODIN_HEAD_BASE64 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYxMjkyNjcyMjcyNmEyNGQzY2I0MTIwYWUzNjJhN2Y0MmUxODljNGQyZjQ1YjhlODBlNzUzZTdiMTE0M2RkNyJ9fX0=";
 
     public OdinBoss(LivingEntity entity) {
-        super(entity, "odin", "§e§lOdín §7§l- §ePadre de Todo", 1800.0, BarColor.BLUE, BarStyle.SEGMENTED_20);
+        super(entity, "odin", "§e§lOdin §7§l- §eAllfather", 1800.0, BarColor.BLUE, BarStyle.SEGMENTED_20);
 
         // Scale entity size slightly larger (1.4)
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);
@@ -40,7 +40,7 @@ public class OdinBoss extends OdysseyBoss {
         ItemStack odinHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) odinHead.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName("§eYelmo de Odín");
+            meta.setDisplayName("§eOdin's Helm");
             PlayerProfile profile = (PlayerProfile) Bukkit.createProfile(UUID.randomUUID());
             profile.setProperty(new ProfileProperty("textures", ODIN_HEAD_BASE64));
             meta.setPlayerProfile(profile);

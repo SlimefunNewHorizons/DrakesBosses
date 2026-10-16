@@ -44,6 +44,6 @@ public class GuardianSummonSkill implements BossSkill {
             }
         }
 
-        target.sendMessage("§9§l¡Poseidón invoca Guardianes de las Profundidades!");
+        target.sendMessage("§9§lPoseidon summons Guardians of the Deep!");
     }
 }

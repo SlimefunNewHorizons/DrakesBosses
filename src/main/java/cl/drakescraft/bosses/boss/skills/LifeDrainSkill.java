@@ -42,6 +42,6 @@ public class LifeDrainSkill implements BossSkill {
         double newHealth = Math.min(boss.getMaxHealth(), currentHealth + damage);
         boss.getEntity().setHealth(newHealth);
 
-        target.sendMessage("§d§l¡Hades drena tu fuerza vital para curarse!");
+        target.sendMessage("§d§lHades drains your life force to heal himself!");
     }
 }

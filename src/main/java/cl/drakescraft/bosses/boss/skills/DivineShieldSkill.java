@@ -41,6 +41,6 @@ public class DivineShieldSkill implements BossSkill {
             }, delay);
         }
 
-        boss.announceAttack("Escudo Divino: inmune por 8s");
+        boss.announceAttack("Divine Shield: immune for 8s");
     }
 }

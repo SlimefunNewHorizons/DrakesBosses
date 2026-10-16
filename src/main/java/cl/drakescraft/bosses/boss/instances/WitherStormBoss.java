@@ -66,7 +66,7 @@ public class WitherStormBoss extends OdysseyBoss {
 
     /** Rayo Tractor: Succiona a los jugadores hacia arriba con partículas del Vacío y levitación. */
     private void tractorBeam(Player target) {
-        speak("NADA ESCAPA A MI RAYO TRACTOR.");
+        speak("NOTHING ESCAPES MY TRACTOR BEAM.");
         Location origin = entity.getLocation().add(0, 3, 0);
         origin.getWorld().playSound(origin, Sound.ENTITY_WARDEN_EMERGE, 2.0f, 0.5f);
 
@@ -98,7 +98,7 @@ public class WitherStormBoss extends OdysseyBoss {
     public static void triggerScreamer(Player player) {
         if (player == null || !player.isOnline()) return;
 
-        player.sendTitle("§4§lÉL TE OBSERVA", "§cEl Wither Storm consume tu mente...", 5, 30, 10);
+        player.sendTitle("§4§lIT WATCHES YOU", "§cThe Wither Storm consumes your mind...", 5, 30, 10);
         player.playSound(player.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_CURSE, 2.0f, 0.5f);
         player.playSound(player.getLocation(), Sound.ENTITY_WARDEN_SONIC_BOOM, 2.0f, 0.6f);
         player.playSound(player.getLocation(), Sound.AMBIENT_CAVE, 2.0f, 0.4f);
@@ -110,7 +110,7 @@ public class WitherStormBoss extends OdysseyBoss {
 
     /** Láser del Bloque de Comandos: Haz concentrado de energía destructiva. */
     private void commandBlockLaser(Player target) {
-        speak("¡EL NÚCLEO DE COMANDO EXTERMINARÁ ESTE MUNDO!");
+        speak("THE COMMAND CORE WILL EXTERMINATE THIS WORLD!");
         Location eye = entity.getLocation().add(0, 3, 0);
         Vector dir = target.getLocation().add(0, 1, 0).toVector().subtract(eye.toVector()).normalize();
 
@@ -132,7 +132,7 @@ public class WitherStormBoss extends OdysseyBoss {
 
     /** Escombros del Wither Storm: Lanza rocas de Crying Obsidian gigantes. */
     private void witherStormDebris(Player target) {
-        speak("LA MATERIA DE ESTE MUNDO PERTENECE A LA TORMENTA.");
+        speak("THE MATTER OF THIS WORLD BELONGS TO THE STORM.");
         Location origin = entity.getLocation().add(0, 5, 0);
 
         for (int i = 0; i < 3; i++) {
@@ -163,7 +163,7 @@ public class WitherStormBoss extends OdysseyBoss {
 
     /** Invocación de Esbirros del Vacío. */
     private void summonWitherMinions(Player target) {
-        speak("¡SERES DE LA TORMENTA, CONSUMID SU CARNE!");
+        speak("CREATURES OF THE STORM, CONSUME THEIR FLESH!");
         Location center = entity.getLocation();
         for (int i = 0; i < 3; i++) {
             Location loc = center.clone().add(random.nextInt(8) - 4, 0, random.nextInt(8) - 4);

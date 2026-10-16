@@ -252,8 +252,8 @@ public abstract class OdysseyBoss {
         loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.2f, phase == 3 ? 0.5f : 0.8f);
         emitPhaseRupture(loc, phase);
         speak(phase == 3
-                ? "¡No conocéis mi verdadero poder!"
-                : "Esto apenas comienza, mortales.");
+                ? "You have not seen my true power!"
+                : "This is only the beginning, mortals.");
     }
 
     /** Applies one local, bounded phase shockwave to every boss encounter. */

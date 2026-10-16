@@ -578,18 +578,18 @@ public class BossManager implements Listener {
         if (now - lastAnnounce > 10000L) { // Cooldown de 10 segundos por tipo de jefe
             lastSpawnAnnouncements.put(bossName, now);
             String msg = ChatColor.translateAlternateColorCodes('&',
-                    "&c&l[MÍTICO] &f¡El jefe ancestral " + bossName + " &fha aparecido cerca!");
+                    "&c&l[MYTHIC] &fThe ancient boss " + bossName + " &fhas appeared nearby!");
             notifyNearby(boss.getEntity().getLocation(), msg, 1.0f);
         } else {
             String msg = ChatColor.translateAlternateColorCodes('&',
-                    "&c&l[MÍTICO] &f¡El jefe ancestral " + bossName + " &fha aparecido cerca!");
+                    "&c&l[MYTHIC] &fThe ancient boss " + bossName + " &fhas appeared nearby!");
             notifyNearby(boss.getEntity().getLocation(), msg, 0.8f);
         }
     }
 
     private void broadcastDeath(OdysseyBoss boss, Player killer) {
         String msg = ChatColor.translateAlternateColorCodes('&',
-                "&c&l[MÍTICO] &f¡El jefe " + boss.getDisplayName() + " &fha sido derrotado por &a" + killer.getName() + "&f!");
+                "&c&l[MYTHIC] &fBoss " + boss.getDisplayName() + " &fwas defeated by &a" + killer.getName() + "&f!");
         notifyNearby(boss.getEntity().getLocation(), msg, 0.7f);
     }
 
@@ -839,9 +839,9 @@ public class BossManager implements Listener {
             queuePendingReward(recipient.getUniqueId(), leftover);
         }
         recipient.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                "&6&l[MÍTICO] &eRecibiste &f" + item.getItemMeta().getDisplayName() + " &epor derrotar a &f" + bossId + "&e."));
+                "&6&l[MYTHIC] &eYou received &f" + item.getItemMeta().getDisplayName() + " &efor defeating &f" + bossId + "&e."));
         if (!overflow.isEmpty()) {
-            recipient.sendMessage("§6[MÍTICO] §eInventario lleno: tu recompensa quedó guardada y se entregará al tener espacio.");
+            recipient.sendMessage("§6[MYTHIC] §eInventory full: your reward was saved and will be delivered when space is available.");
         }
     }
 
@@ -897,7 +897,7 @@ public class BossManager implements Listener {
         attacker.getWorld().spawnParticle(org.bukkit.Particle.ENCHANT, attacker.getLocation().add(0, 1, 0), 32, 0.35, 0.55, 0.35, 0.1);
         attacker.playSound(attacker.getLocation(), Sound.BLOCK_BEACON_POWER_SELECT, 0.9F, 0.65F);
         attacker.sendActionBar(ChatColor.translateAlternateColorCodes('&',
-                highPowerWeapon ? "&5&lEl jefe adapta su defensa a tu arma de endgame." : "&6&lEl jefe bloquea tu ráfaga de daño."));
+                highPowerWeapon ? "&5&lThe boss adapts its defense to your endgame weapon." : "&6&lThe boss blocks your damage burst."));
     }
 
     /** Sortea una reliquia configurada sin permitir que varias caigan en la misma muerte. */
@@ -971,9 +971,9 @@ public class BossManager implements Listener {
         pendingRewards.set(path, remaining.isEmpty() ? null : remaining);
         savePendingRewards();
         if (remaining.isEmpty()) {
-            player.sendMessage("§6[MÍTICO] §eTus recompensas pendientes fueron entregadas.");
+            player.sendMessage("§6[MYTHIC] §eYour pending rewards were delivered.");
         } else {
-            player.sendMessage("§6[MÍTICO] §eAún tienes recompensas pendientes: libera espacio en tu inventario.");
+            player.sendMessage("§6[MYTHIC] §eYou still have pending rewards: free up inventory space.");
         }
     }
 

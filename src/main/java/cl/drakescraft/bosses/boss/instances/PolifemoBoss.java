@@ -28,13 +28,13 @@ public class PolifemoBoss extends OdysseyBoss {
     private static final String CYCLOPS_HEAD_BASE64 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzE0MjBhOWFlNDk0MDFmNTY1MjY2MmFhZjRmMzlmZGY2N2RlMjM3OWFhYzJmODJkY2JlNGNkMzE4ZDgifX19";
 
     public PolifemoBoss(LivingEntity entity) {
-        super(entity, "polifemo", "§6§lPolifemo §7§l- §6El Cíclope", 1500.0, BarColor.RED, BarStyle.SEGMENTED_12);
+        super(entity, "polifemo", "§6§lPolyphemus §7§l- §6The Cyclops", 1500.0, BarColor.RED, BarStyle.SEGMENTED_12);
 
         // Equip Cyclops head
         ItemStack cyclopsHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) cyclopsHead.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName("§6Cabeza de Cíclope");
+            meta.setDisplayName("§6Cyclops Head");
             PlayerProfile profile = (PlayerProfile) Bukkit.createProfile(UUID.randomUUID());
             profile.setProperty(new ProfileProperty("textures", CYCLOPS_HEAD_BASE64));
             meta.setPlayerProfile(profile);

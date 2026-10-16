@@ -66,7 +66,7 @@ public class CerberoBoss extends OdysseyBoss {
             Location loc = entity.getLocation();
             loc.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, loc.add(0, 1, 0), 60, 1, 1, 1, 0.1);
             loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.2f, 0.6f);
-            speak("Una cabeza cae. Las restantes lucharán con más furia.");
+            speak("One head falls. The remaining heads fight with greater fury.");
         }
     }
 

@@ -77,7 +77,7 @@ public final class FullInfinityArmorCounter {
                 8,
                 50,
                 16);
-        player.sendActionBar(ChatColor.DARK_PURPLE + "El jefe quebranta tu Infinity Singularity: tu defensa no es absoluta.");
+        player.sendActionBar(ChatColor.DARK_PURPLE + "The boss shatters your Infinity Singularity: your defense is not absolute.");
     }
 
     /** Removes per-boss cooldown entries when an encounter is cleaned up. */

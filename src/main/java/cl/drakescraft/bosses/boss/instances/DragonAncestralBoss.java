@@ -58,7 +58,7 @@ public class DragonAncestralBoss extends OdysseyBoss {
 
     /** Rugido del Dragón: Onda expansiva que ralentiza y empuja a todos en radio 30. */
     private void dragonRoar() {
-        speak("¡MI RUGIDO ESTREMECERÁ LOS CIELOS Y LA TIERRA!");
+        speak("MY ROAR SHALL SHAKE HEAVEN AND EARTH!");
         Location loc = entity.getLocation();
         loc.getWorld().playSound(loc, Sound.ENTITY_ENDER_DRAGON_GROWL, 2.0f, 0.4f);
         loc.getWorld().spawnParticle(Particle.EXPLOSION_EMITTER, loc, 3, 2, 2, 2, 0);
@@ -72,7 +72,7 @@ public class DragonAncestralBoss extends OdysseyBoss {
 
     /** Ráfaga de Bolas de Fuego del Dragón. */
     private void fireballBarrage(Player target) {
-        speak("¡SENTID LAS LLAMAS ANCESTRALES DEL ABISMO!");
+        speak("FEEL THE ANCIENT FLAMES OF THE ABYSS!");
         Location eye = entity.getLocation().add(0, 3, 0);
         eye.getWorld().playSound(eye, Sound.ENTITY_ENDER_DRAGON_SHOOT, 1.8f, 0.6f);
 
@@ -88,7 +88,7 @@ public class DragonAncestralBoss extends OdysseyBoss {
 
     /** Vendaval de Alas: Lanza por los aires a los combatientes cercanos. */
     private void wingBuffet() {
-        speak("¡MIS ALAS DESATARÁN LA TEMPESTAD!");
+        speak("MY WINGS SHALL UNLEASH THE TEMPEST!");
         Location loc = entity.getLocation();
         loc.getWorld().playSound(loc, Sound.ENTITY_ENDER_DRAGON_FLAP, 2.0f, 0.5f);
         loc.getWorld().spawnParticle(Particle.CLOUD, loc, 120, 5, 2, 5, 0.2);
@@ -102,7 +102,7 @@ public class DragonAncestralBoss extends OdysseyBoss {
 
     /** Aliento del Vacío: Haz de partículas mágicas y pudrición Wither. */
     private void voidBreath(Player target) {
-        speak("EL ALIENTO DEL VACÍO CONSUMIRÁ VUESTRA ALMA.");
+        speak("THE BREATH OF THE VOID SHALL CONSUME YOUR SOUL.");
         Location eye = entity.getLocation().add(0, 2, 0);
         Vector dir = target.getLocation().toVector().subtract(eye.toVector()).normalize();
 

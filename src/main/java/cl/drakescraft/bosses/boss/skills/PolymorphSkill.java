@@ -46,7 +46,7 @@ public class PolymorphSkill implements BossSkill {
         ItemStack pigHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) pigHead.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&dCabeza de Cerdo"));
+            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&dPig Head"));
             PlayerProfile profile = (PlayerProfile) Bukkit.createProfile(UUID.randomUUID());
             profile.setProperty(new ProfileProperty("textures", PIG_HEAD_BASE64));
             meta.setPlayerProfile(profile);
@@ -65,7 +65,7 @@ public class PolymorphSkill implements BossSkill {
         target.getWorld().spawnParticle(Particle.WITCH, target.getLocation().add(0, 1, 0), 30, 0.5, 0.5, 0.5, 0.1);
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_PIG_AMBIENT, 1.0f, 1.0f);
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_WITCH_CELEBRATE, 1.0f, 1.0f);
-        target.sendMessage(ChatColor.translateAlternateColorCodes('&', "&d&l¡Circe te ha convertido temporalmente en un cerdo!"));
+        target.sendMessage(ChatColor.translateAlternateColorCodes('&', "&d&lCirce temporarily turned you into a pig!"));
 
         // Schedule restore in 5 seconds (100 ticks)
         Bukkit.getScheduler().runTaskLater(DrakesBosses.getInstance(), () -> restorePlayer(target), 100L);
@@ -80,7 +80,7 @@ public class PolymorphSkill implements BossSkill {
                 player.getInventory().setHelmet(original);
                 player.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, player.getLocation().add(0, 1, 0), 20, 0.5, 0.5, 0.5, 0.1);
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED, 1.0f, 1.2f);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a&l¡Has recuperado tu forma humana!"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&a&lYou regained your human form!"));
             }
         }
     }

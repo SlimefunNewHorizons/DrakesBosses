@@ -51,7 +51,7 @@ public class TsunamiSkill implements BossSkill {
                     if (entity instanceof Player p && !p.isDead()) {
                         p.damage(5.0, boss.getEntity()); // 2.5 hearts
                         p.setVelocity(dirCopy.clone().multiply(1.5).setY(0.5));
-                        p.sendMessage("§9§l¡El Tsunami de Poseidón te ha golpeado!");
+                        p.sendMessage("§9§lPoseidon's Tsunami hit you!");
                     }
                 }
             }, i * 2L);

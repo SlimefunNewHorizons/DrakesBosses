@@ -64,7 +64,7 @@ public class ColosoEndBoss extends OdysseyBoss {
 
     /** Grieta del Vacío: Atraé a los jugadores cercanos y los aturde con Slowness y Darkness. */
     private void voidRift(Player target) {
-        speak("El vacío reclama vuestra existencia.");
+        speak("The void claims your existence.");
         Location center = entity.getLocation();
         cl.drakescraft.bosses.util.ParticleCompat.spawnDragonBreath(
                 center.getWorld(), center, 120, 3, 3, 3, 0.1, 1.0f);
@@ -84,7 +84,7 @@ public class ColosoEndBoss extends OdysseyBoss {
         var players = findPlayersInRange(24);
         if (players.size() < 2) return;
 
-        speak("El espacio no tiene significado ante mí.");
+        speak("Space holds no meaning before me.");
         entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2.0f, 0.5f);
 
         Player p1 = players.get(0);
@@ -103,7 +103,7 @@ public class ColosoEndBoss extends OdysseyBoss {
 
     /** Ceguera Absoluta del End. */
     private void voidBlindness() {
-        speak("¡Contemplad la oscuridad del abismo!");
+        speak("Behold the darkness of the abyss!");
         entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_WITHER_AMBIENT, 1.5f, 0.4f);
         for (Player p : findPlayersInRange(30)) {
             p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 120, 1, false, true));
@@ -114,7 +114,7 @@ public class ColosoEndBoss extends OdysseyBoss {
     /** Invocación de Parásitos del Vacío. */
     private void summonEndermites(Player target) {
         Location center = entity.getLocation();
-        speak("¡Surgid, parásitos del plano estelar!");
+        speak("Rise, parasites of the stellar plane!");
         for (int i = 0; i < 4; i++) {
             Location loc = center.clone().add(random.nextInt(6) - 3, 0, random.nextInt(6) - 3);
             Endermite mite = (Endermite) center.getWorld().spawnEntity(loc, org.bukkit.entity.EntityType.ENDERMITE);

@@ -32,7 +32,7 @@ public final class KratosRageSkill implements BossSkill {
         }
 
         if (target != null) {
-            target.sendMessage("§c§l¡KRATOS ENTRA EN IRA DE ESPARTA!");
+            target.sendMessage("§c§lKRATOS ENTERS SPARTAN RAGE!");
         }
     }
 }

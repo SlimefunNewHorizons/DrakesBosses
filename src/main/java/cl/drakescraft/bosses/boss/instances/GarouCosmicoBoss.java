@@ -141,7 +141,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
         center.getWorld().spawnParticle(Particle.REVERSE_PORTAL, center, 140, 1.2D, 1.6D, 1.2D, 0.06D);
         center.getWorld().playSound(center, Sound.ENTITY_WARDEN_EMERGE, 1.6F, 0.55F + rebirthsUsed * 0.08F);
         for (Player player : combatantsNear(center, 48.0D)) {
-            player.sendTitle("§5§lFASE " + (rebirthsUsed + 1), "§dGarou se adapta y renace.", 8, 50, 14);
+            player.sendTitle("§5§lPHASE " + (rebirthsUsed + 1), "§dGarou adapts and is reborn.", 8, 50, 14);
             player.playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, 1.0F, 0.65F);
         }
         Bukkit.getScheduler().runTaskLater(cl.drakescraft.bosses.DrakesBosses.getInstance(), () -> {
@@ -166,13 +166,13 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
         entity.setVelocity(direction.normalize().multiply(1.35D + currentPhase * 0.15D).setY(0.32D));
         entity.getWorld().spawnParticle(Particle.DUST, origin.add(0, 1, 0), 28, 0.45D, 0.6D, 0.45D, 0.08D, COSMIC_DUST);
         entity.getWorld().playSound(origin, Sound.ENTITY_ENDERMAN_SCREAM, 0.8F, 0.55F);
-        announceAttack("Caza predicativa");
+        announceAttack("Predictive hunt");
     }
 
     /** Castiga el cuerpo a cuerpo sin bloquear al jugador ni alterar bloques. */
     private void martialCounter(Player target) {
         Location center = entity.getLocation().add(0, 1.0D, 0);
-        announceAttack("Arte marcial cósmico");
+        announceAttack("Cosmic martial art");
         entity.getWorld().spawnParticle(Particle.SWEEP_ATTACK, center, 8, 1.7D, 0.4D, 1.7D, 0.0D);
         entity.getWorld().playSound(center, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.2F, 0.55F);
         for (Player player : findPlayersInRange(6.0D)) {
@@ -187,7 +187,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
     /** Deja una zona de daño breve y legible, sin fuego, lava ni cambios del mundo. */
     private void cosmicPressure(Location target) {
         Location center = target.clone().add(0, 0.15D, 0);
-        announceAttack("Colapso de energía cósmica");
+        announceAttack("Cosmic energy collapse");
         for (int point = 0; point < 30; point++) {
             double angle = Math.PI * 2.0D * point / 30.0D;
             center.getWorld().spawnParticle(Particle.DUST, center.clone().add(Math.cos(angle) * 5.5D, 0.1D, Math.sin(angle) * 5.5D),
@@ -206,7 +206,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
         Vector path = target.getLocation().add(0, 1.0D, 0).toVector().subtract(start.toVector());
         if (path.lengthSquared() < 0.01D) return;
         Vector step = path.normalize().multiply(0.65D);
-        announceAttack("Puño que imita las estrellas");
+        announceAttack("Star-mimicking fist");
         for (double traveled = 0.0D; traveled < Math.min(34.0D, path.length()); traveled += 0.65D) {
             Location point = start.clone().add(step.clone().multiply(traveled / 0.65D));
             point.getWorld().spawnParticle(Particle.DUST, point, 1, 0, 0, 0, 0, COSMIC_DUST);
@@ -220,7 +220,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
 
     /** Tres golpes guiados que siguen al objetivo, con pausas cortas para poder esquivarlos. */
     private void hunterCombo(Player target) {
-        announceAttack("Combo de cazador de héroes");
+        announceAttack("Hero hunter combo");
         activeSequence = new BukkitRunnable() {
             private int hit;
 
@@ -245,7 +245,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
 
     /** Lanza al objetivo y remata su posicion, pero concede caida lenta para que no muera por terreno. */
     private void ascensionBreak(Player target) {
-        announceAttack("Ascensión y ruptura celestial");
+        announceAttack("Celestial ascent and rupture");
         target.setFallDistance(0.0F);
         target.setVelocity(target.getVelocity().setY(1.15D));
         target.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 18, 1, true, true, true));
@@ -265,7 +265,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
     /** Daño por pulsos explícitos y limitados; una sola secuencia evita acumulaciones de tareas. */
     private void cosmicRadiation(Location target) {
         Location center = target.clone().add(0, 0.2D, 0);
-        announceAttack("Radiación de la estrella caída");
+        announceAttack("Fallen star radiation");
         activeSequence = new BukkitRunnable() {
             private int pulse;
 
@@ -295,9 +295,9 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
      */
     private void cosmicSingularity(Player target) {
         Location center = target.getLocation().clone().add(0.0D, 0.2D, 0.0D);
-        announceAttack("Singularidad final: el vacío devora la arena");
+        announceAttack("Final singularity: the void devours the arena");
         for (Player player : combatantsNear(center, 42.0D)) {
-            player.sendTitle("§5§lSINGULARIDAD", "§dAlejate del nucleo antes del colapso.", 8, 42, 10);
+            player.sendTitle("§5§lSINGULARITY", "§dMove away from the core before it collapses.", 8, 42, 10);
             player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 54, 0, true, true, true));
         }
         activeSequence = new BukkitRunnable() {
@@ -341,7 +341,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
 
     /** Creates temporary visual doubles that strike together without becoming extra bosses. */
     private void residualAssault(Player target) {
-        announceAttack("Imágenes residuales: no existe un único Garou");
+        announceAttack("Afterimages: there is no single Garou");
         clearCosmicAfterimages();
         Location center = target.getLocation().clone();
         int imageCount = Math.min(4, 1 + combatIntensity());
@@ -400,7 +400,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
 
     /** Armas visuales orbitan al boss y despues salen hacia el objetivo una sola vez. */
     private void launchCosmicArsenal(Player target) {
-        announceAttack("Arsenal que gira alrededor del cazador");
+        announceAttack("Arsenal orbiting the hunter");
         clearCosmicWeapons();
         List<ItemStack> arsenal = List.of(
                 new ItemStack(Material.NETHERITE_SWORD), new ItemStack(Material.MACE),
@@ -564,7 +564,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
         center.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, center, 80, 1.2D, 1.7D, 1.2D, 0.08D);
         center.getWorld().spawnParticle(Particle.REVERSE_PORTAL, center, 90, 1.0D, 1.4D, 1.0D, 0.05D);
         center.getWorld().playSound(center, Sound.ENTITY_WARDEN_EMERGE, 1.4F, 0.65F);
-        speak("He observado suficiente. Ahora conozco vuestro ritmo.");
+        speak("I have observed enough. Now I know your rhythm.");
     }
 
     private void setAttribute(Attribute attribute, double value) {

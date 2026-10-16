@@ -63,7 +63,7 @@ public class AresBoss extends OdysseyBoss {
                 rageActivated = true;
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 300, 1)); // 15 seconds Strength II
                 entity.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 1)); // 15 seconds Speed II
-                target.sendMessage("§c§l¡Ares desata su Furia Berserker! Su fuerza y velocidad aumentan radicalmente.");
+                target.sendMessage("§c§lAres unleashes Berserker Fury! His strength and speed rise sharply.");
             }
 
             BossSkill skill = skills.get(random.nextInt(skills.size()));

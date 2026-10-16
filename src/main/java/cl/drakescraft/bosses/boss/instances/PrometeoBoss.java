@@ -80,7 +80,7 @@ public class PrometeoBoss extends OdysseyBoss {
         loc.getWorld().spawnParticle(Particle.FLAME, loc.clone().add(0, 1, 0), 180, 1.8, 2.5, 1.8, 0.25);
         loc.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, loc.clone().add(0, 1, 0), 80, 1.2, 1.6, 1.2, 0.08);
         loc.getWorld().playSound(loc, Sound.ENTITY_WITHER_SPAWN, 1.5f, 0.8f);
-        speak("¡Las cenizas no son mi final! Ahora conoceréis el fuego eterno.");
+        speak("Ashes are not my end! Now you will know eternal fire.");
         Bukkit.getScheduler().runTaskLater(DrakesBosses.getInstance(), () -> invulnerable = false, 100L);
         return true;
     }
@@ -89,9 +89,9 @@ public class PrometeoBoss extends OdysseyBoss {
     protected void onPhaseChange(int phase) {
         super.onPhaseChange(phase);
         if (phase == 2) {
-            speak("El fuego robado arderá en vuestra sangre.");
+            speak("The stolen fire will burn in your blood.");
         } else if (phase == 3) {
-            speak("Mi castigo sólo acaba de comenzar.");
+            speak("My punishment has only begun.");
         }
     }
 
@@ -135,7 +135,7 @@ public class PrometeoBoss extends OdysseyBoss {
         if (victim == null || hasCurse) return;
         hasCurse = true;
         final Player target = victim;
-        target.sendMessage("§4§l☠ §c¡Prometeo te ha maldecido con el Castigo Eterno!");
+        target.sendMessage("§4§l☠ §cPrometheus has cursed you with Eternal Punishment!");
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_WITHER_AMBIENT, 1.0f, 0.5f);
         Bukkit.getScheduler().runTaskTimer(DrakesBosses.getInstance(), task -> {
             if (entity.isDead() || target.isDead() || !target.isOnline()

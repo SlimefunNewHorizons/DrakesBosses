@@ -22,7 +22,7 @@ public class LevitationFallSkill implements BossSkill {
 
         // Apply high levitation for 2 seconds (40 ticks)
         target.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 35, 4));
-        target.sendMessage("§9§l¡Poseidón manipula la gravedad del océano y te eleva por los aires!");
+        target.sendMessage("§9§lPoseidon manipulates ocean gravity and lifts you into the air!");
 
         // Play falling sound after levitation ends
         org.bukkit.Bukkit.getScheduler().runTaskLater(cl.drakescraft.bosses.DrakesBosses.getInstance(), () -> {

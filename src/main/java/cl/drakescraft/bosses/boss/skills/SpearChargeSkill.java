@@ -39,7 +39,7 @@ public class SpearChargeSkill implements BossSkill {
                 if (nearby instanceof Player p && !p.isDead()) {
                     p.damage(8.0, boss.getEntity()); // 4 hearts
                     p.setVelocity(p.getLocation().toVector().subtract(currentLoc.toVector()).normalize().multiply(1.2).setY(0.4));
-                    p.sendMessage("§c§l¡Ares te ha embestido con su Lanza!");
+                    p.sendMessage("§c§lAres charged you with his spear!");
                 }
             }
         }, 8L);

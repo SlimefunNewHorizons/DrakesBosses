@@ -41,7 +41,7 @@ public class DamageAuraSkill implements BossSkill {
                     if (entity instanceof Player p && !p.isDead()) {
                         p.damage(3.0, boss.getEntity()); // 1.5 hearts
                         p.setFireTicks(40); // 2 seconds on fire
-                        p.sendMessage("§c§l¡El Aura de Daño de Ares te quema!");
+                        p.sendMessage("§c§lAres' Damage Aura burns you!");
                     }
                 }
             }, delay);

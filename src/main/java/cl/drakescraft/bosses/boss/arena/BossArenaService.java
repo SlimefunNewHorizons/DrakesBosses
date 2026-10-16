@@ -462,7 +462,7 @@ public final class BossArenaService implements Listener {
             player.teleport(Bukkit.getWorlds().getFirst().getSpawnLocation());
         }
         player.setFallDistance(0.0F);
-        player.sendMessage("§a[BossArena] Regresaste al lugar desde donde entraste.");
+        player.sendMessage("§a[BossArena] You returned to where you entered from.");
     }
 
     private void rememberReturn(UUID playerId, Location origin) {

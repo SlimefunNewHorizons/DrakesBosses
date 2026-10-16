@@ -28,7 +28,7 @@ public class DarknessZoneSkill implements BossSkill {
             if (entity instanceof Player p && !p.isDead()) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 100, 0)); // 5 seconds blindness
                 p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 100, 1)); // 5 seconds wither II
-                p.sendMessage("§8§l¡Hades desata una Zona de Oscuridad! Sientes tu energía drenarse...");
+                p.sendMessage("§8§lHades unleashes a Darkness Zone! You feel your energy draining...");
             }
         }
     }

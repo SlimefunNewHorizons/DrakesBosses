@@ -49,7 +49,7 @@ public class OlympusSwordsSkill implements BossSkill {
             if (e instanceof Player p && p.isOnline() && !p.isDead()) {
                 p.damage(6.0, bossEntity); // 3 hearts
                 p.setFireTicks(60); // Ignite for 3 seconds (60 ticks)
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&l¡La lluvia de Espadas del Olimpo cae sobre ti!"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lThe rain of Olympus Swords falls upon you!"));
                 p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_HURT_ON_FIRE, 1.0f, 1.0f);
             }
         });

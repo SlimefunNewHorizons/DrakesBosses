@@ -19,7 +19,7 @@ public class LightningStormSkill implements BossSkill {
         }
 
         Location targetLoc = target.getLocation();
-        target.sendMessage("§e§l¡Se desata una tormenta eléctrica divina en tu posición!");
+        target.sendMessage("§e§lA divine lightning storm erupts at your position!");
 
         // Strike 6 lightnings over 1.5 seconds (30 ticks)
         for (int i = 0; i < 6; i++) {

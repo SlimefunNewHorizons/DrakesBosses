@@ -253,7 +253,7 @@ public final class BossItemListener implements Listener {
                 // 20% probabilidad de volverse invisible por 3 segundos
                 if (Math.random() < 0.20) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 60, 0, false, false, true));
-                    player.sendMessage("§a§o[Loki] Te has desvanecido en las sombras...");
+                    player.sendMessage("§a§o[Loki] You fade into the shadows...");
                 }
                 break;
 
@@ -444,7 +444,7 @@ public final class BossItemListener implements Listener {
             var result = plugin.getBossArenas().startWithSummoner(bossId, player);
             if (!result.started()) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c[BossArena] No se consumió el invocador: " + result.error()));
+                        "&c[BossArena] The summoner was not consumed: " + result.error()));
                 return;
             }
 
@@ -452,7 +452,7 @@ public final class BossItemListener implements Listener {
             if (item.getAmount() > 1) item.setAmount(item.getAmount() - 1);
             else player.getInventory().setItem(event.getHand(), null);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&d[BossArena] El invocador abrió una arena segura. Buena suerte."));
+                    "&d[BossArena] The summoner opened a safe arena. Good luck."));
             return;
         }
 
@@ -467,7 +467,7 @@ public final class BossItemListener implements Listener {
             if (diff < 5000) {
                 double remaining = (5000 - diff) / 1000.0;
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&l[COOLDOWN] &eEl Cetro de Loki está recargando. Espera &c" + String.format("%.1f", remaining) + "s&e."));
+                        "&c&l[COOLDOWN] &eLoki's Scepter is recharging. Wait &c" + String.format("%.1f", remaining) + "s&e."));
                 return;
             }
 
@@ -680,10 +680,10 @@ public final class BossItemListener implements Listener {
     private void startLeviathanOrbit(Player player, ItemStack axe) {
         UUID playerId = player.getUniqueId();
         if (activeLeviathanOrbits.containsKey(playerId)) {
-            player.sendMessage("§b[Leviatán] §7El hacha ya está orbitando.");
+            player.sendMessage("§b[Leviathan] §7The axe is already orbiting.");
             return;
         }
-        if (!tryUseLeviathanCooldown(player, 20_000L, "Órbita rúnica")) return;
+        if (!tryUseLeviathanCooldown(player, 20_000L, "Runic orbit")) return;
 
         ItemDisplay display = player.getWorld().spawn(player.getLocation().add(0, 1.2, 0), ItemDisplay.class);
         display.setItemStack(axe.clone());
@@ -727,14 +727,14 @@ public final class BossItemListener implements Listener {
         }.runTaskTimer(plugin, 1L, 1L);
         activeLeviathanOrbits.put(playerId, task);
         player.getWorld().playSound(player.getLocation(), Sound.ITEM_TRIDENT_THROW, 0.9f, 0.7f);
-        player.sendMessage("§b[Leviatán] §fÓrbita rúnica activada.");
+        player.sendMessage("§b[Leviathan] §fRunic orbit activated.");
     }
 
     /** Throws the axe and returns the exact item through addItem, never overwriting a hand slot. */
     private void throwLeviathanAxe(Player player, EquipmentSlot hand, ItemStack item) {
         UUID playerId = player.getUniqueId();
         if (pendingLeviathanAxes.containsKey(playerId)) return;
-        if (!tryUseLeviathanCooldown(player, 2_000L, "Lanzamiento rúnico")) return;
+        if (!tryUseLeviathanCooldown(player, 2_000L, "Runic throw")) return;
 
         ItemStack axe = item.clone();
         if (hand == EquipmentSlot.HAND) {
@@ -776,7 +776,7 @@ public final class BossItemListener implements Listener {
         long lastUse = leviathanCooldowns.getOrDefault(player.getUniqueId(), 0L);
         long remaining = cooldownMillis - (now - lastUse);
         if (remaining > 0L) {
-            player.sendMessage("§b[Leviatán] §7" + abilityName + " disponible en §f" + String.format("%.1f", remaining / 1000.0) + "s§7.");
+            player.sendMessage("§b[Leviathan] §7" + abilityName + " available in §f" + String.format("%.1f", remaining / 1000.0) + "s§7.");
             return false;
         }
         leviathanCooldowns.put(player.getUniqueId(), now);
