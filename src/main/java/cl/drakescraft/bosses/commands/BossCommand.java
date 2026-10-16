@@ -30,7 +30,7 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!sender.hasPermission("drakesbosses.admin")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNo tienes permiso para usar este comando."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou do not have permission to use this command."));
             return true;
         }
 
@@ -40,7 +40,7 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&c&lUSO: &e/boss <spawn|spawnall|give> ... &7| &fEspeciales: &ddragon&f, &5wither"));
+                    "&c&lUSAGE: &e/boss <spawn|spawnall|give> ... &7| &fSpecial: &ddragon&f, &5wither"));
             return true;
         }
 
@@ -53,29 +53,29 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
         // ── SUBCOMANDO: SPAWN ──
         if (sub.equalsIgnoreCase("spawn")) {
             if (!(sender instanceof Player player)) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cEste comando solo puede ser ejecutado por jugadores."));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cOnly players can use this command."));
                 return true;
             }
 
             if (args.length < 2) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&lUSO: &e/boss spawn <tipo> &7| &fEjemplo: &e/boss spawn dragon"));
+                        "&c&lUSAGE: &e/boss spawn <type> &7| &fExample: &e/boss spawn dragon"));
                 return true;
             }
 
             String bossType = args[1].toLowerCase();
             if (!isValidBossType(bossType)) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&lERROR: &eEl jefe mítico '" + bossType + "' no existe."));
+                        "&c&lERROR: &eThe mythical boss '" + bossType + "' does not exist."));
                 return true;
             }
 
             var result = plugin.getBossArenas().startForced(bossType, List.of(player));
             if (result.started()) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&a&l¡ÉXITO! &eEl jefe mítico &f" + bossType + " &eha sido llevado a una arena segura."));
+                        "&a&lSUCCESS! &eThe mythical boss &f" + bossType + " &ehas been moved to a safe arena."));
             } else {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNo se pudo crear la arena: " + result.error()));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cCould not create the arena: " + result.error()));
             }
             return true;
         }
@@ -84,21 +84,21 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
         if (sub.equalsIgnoreCase("give")) {
             if (args.length < 3) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&lUSO: &e/boss give <jugador> <tipo>"));
+                        "&c&lUSAGE: &e/boss give <player> <type>"));
                 return true;
             }
 
             Player target = Bukkit.getPlayerExact(args[1]);
             if (target == null || !target.isOnline()) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&lERROR: &eEl jugador '" + args[1] + "' no está conectado."));
+                        "&c&lERROR: &ePlayer '" + args[1] + "' is not online."));
                 return true;
             }
 
             String bossType = args[2].toLowerCase();
             if (!isValidBossType(bossType)) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&lERROR: &eEl jefe mítico '" + bossType + "' no existe."));
+                        "&c&lERROR: &eThe mythical boss '" + bossType + "' does not exist."));
                 return true;
             }
 
@@ -109,14 +109,14 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
             }
 
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&a&l¡ÉXITO! &eEntregado Invocador de " + bossType.toUpperCase() + " a " + target.getName()));
+                    "&a&lSUCCESS! &eDelivered a " + bossType.toUpperCase() + " Summoner to " + target.getName()));
             target.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&d&l⚡ &e¡Has recibido un &dInvocador de " + bossType.toUpperCase() + "&e! Haz clic derecho para despertarlo."));
+                    "&d&l⚡ &eYou received a &d" + bossType.toUpperCase() + " Summoner&e! Right-click to awaken it."));
             return true;
         }
 
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                "&c&lUSO: &e/boss <spawn|spawnall|give> ..."));
+                "&c&lUSAGE: &e/boss <spawn|spawnall|give> ..."));
         return true;
     }
 
@@ -126,9 +126,9 @@ public final class BossCommand implements CommandExecutor, TabCompleter {
      */
     private boolean spawnAllBosses(CommandSender sender) {
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                "&e[BossArena] Las pruebas masivas fuera de una arena fueron retiradas por seguridad."));
+                "&e[BossArena] Mass tests outside an arena were removed for safety."));
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                "&7Usa &f/bosswarp staff <jefe> <jugador> &7para crear una prueba aislada."));
+                "&7Use &f/bosswarp staff <boss> <player> &7to create an isolated test."));
         return true;
     }
 

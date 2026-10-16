@@ -47,13 +47,13 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
         }
         if (args.length >= 1 && (args[0].equalsIgnoreCase("leave") || args[0].equalsIgnoreCase("salir"))) {
             if (!arenas.leave(player)) {
-                player.sendMessage("§cNo estás en ninguna arena activa ni en modo espectador.");
+                player.sendMessage("§cYou are not in an active arena or spectator mode.");
             }
             return true;
         }
         if (args.length >= 2 && args[0].equalsIgnoreCase("spectate")) {
             Player target = Bukkit.getPlayerExact(args[1]);
-            if (target == null || !arenas.spectate(player, target)) player.sendMessage("§cEse jugador no está en una arena activa.");
+            if (target == null || !arenas.spectate(player, target)) player.sendMessage("§cThat player is not in an active arena.");
             return true;
         }
         boolean group = args.length > 1 && args[1].equalsIgnoreCase("grupo");
@@ -62,10 +62,10 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
         if (group) {
             for (int index = 2; index < args.length; index++) {
                 Player member = Bukkit.getPlayerExact(args[index]);
-                if (member == null) { player.sendMessage("§cNo está conectado: " + args[index]); return true; }
+                if (member == null) { player.sendMessage("§cNot online: " + args[index]); return true; }
                 roster.add(member);
             }
-            if (roster.size() < 2) { player.sendMessage("§cGrupo requiere al menos dos jugadores."); return true; }
+            if (roster.size() < 2) { player.sendMessage("§cA group requires at least two players."); return true; }
         }
         var result = arenas.start(args[0].toLowerCase(Locale.ROOT), roster, group);
         if (!result.started()) {
@@ -73,10 +73,10 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         if (result.feePerPlayer() > 0.0D) {
-            player.sendMessage("§6[BossArena] §eEntrada cobrada: §6" + formatFee(result.feePerPlayer())
-                    + " Dragmas §epor jugador.");
+            player.sendMessage("§6[BossArena] §eEntry fee charged: §6" + formatFee(result.feePerPlayer())
+                    + " Dragmas §eper player.");
         } else {
-            player.sendMessage("§6[BossArena] §eArena iniciada sin cobro.");
+            player.sendMessage("§6[BossArena] §eArena started with no entry fee.");
         }
         return true;
     }
@@ -84,18 +84,18 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
     /** Staff-only arena orchestration for testing encounters with named online players. */
     private boolean startForcedArena(Player staff, String[] args) {
         if (!hasStaffAccess(staff)) {
-            staff.sendMessage("§cNo tienes permiso para forzar arenas.");
+            staff.sendMessage("§cYou do not have permission to force arenas.");
             return true;
         }
         if (args.length < 3) {
-            staff.sendMessage("§eUso staff: /bosswarp staff <jefe> <jugador> [jugador...]");
+            staff.sendMessage("§eStaff usage: /bosswarp staff <boss> <player> [player...]");
             return true;
         }
         Set<Player> roster = new LinkedHashSet<>();
         for (int index = 2; index < args.length; index++) {
             Player member = Bukkit.getPlayerExact(args[index]);
             if (member == null) {
-                staff.sendMessage("§cNo está conectado: " + args[index]);
+                staff.sendMessage("§cNot online: " + args[index]);
                 return true;
             }
             roster.add(member);
@@ -105,12 +105,12 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
             staff.sendMessage("§c[BossArena] " + result.error());
             return true;
         }
-        staff.sendMessage("§a[BossArena] Arena staff creada sin cobro para " + roster.size() + " jugador(es).");
+        staff.sendMessage("§a[BossArena] Staff arena created with no entry fee for " + roster.size() + " player(s).");
         return true;
     }
 
     private void sendPrices(Player player) {
-        player.sendMessage("§6§l[BossArena] §eEntrada por jugador en Dragmas");
+        player.sendMessage("§6§l[BossArena] §eEntry fee per player in Dragmas");
         player.sendMessage(line("Circe", "circe", "Polifemo", "polifemo", "Dios Corrupto", "dios_corrupto"));
         player.sendMessage(line("Thor", "thor", "Ares", "ares", "Poseidón", "poseidon"));
         player.sendMessage(line("Loki", "loki", "Zeus", "zeus", "Hades", "hades"));
@@ -120,7 +120,7 @@ public final class BossWarpCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(line("Anubis", "anubis", "Set", "set", "Odín", "odin"));
         player.sendMessage(line("Kratos", "kratos", "Tifón", "tifon", "Dragón", "dragon"));
         player.sendMessage("§7Wither Storm §6" + formatFee(arenas.entryFee("wither_storm")));
-        player.sendMessage("§8En grupo, cada integrante paga. Un fallo de creación revierte el cobro una vez.");
+        player.sendMessage("§8In groups, every member pays. A creation failure reverses the charge once.");
     }
 
     private String line(String firstName, String firstId, String secondName, String secondId, String thirdName, String thirdId) {
