@@ -111,12 +111,17 @@ public class BossManager implements Listener {
         this.pendingRewards = YamlConfiguration.loadConfiguration(pendingRewardsFile);
         java.lang.reflect.Method getById = null;
         java.lang.reflect.Method getItem = null;
-        try {
-            Class<?> slimefunItem = Class.forName("com.github.drakescraft_labs.slimefun4.api.items.SlimefunItem");
-            getById = slimefunItem.getMethod("getById", String.class);
-            getItem = slimefunItem.getMethod("getItem");
-        } catch (ReflectiveOperationException ignored) {
-            // Slimefun is optional; boss reliquias siguen funcionando sin su pool aleatorio.
+        for (String className : List.of(
+                "io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem",
+                "com.github.drakescraft_labs.slimefun4.api.items.SlimefunItem")) {
+            try {
+                Class<?> slimefunItem = Class.forName(className);
+                getById = slimefunItem.getMethod("getById", String.class);
+                getItem = slimefunItem.getMethod("getItem");
+                break;
+            } catch (ReflectiveOperationException ignored) {
+                // Try the legacy Drake wrapper next; Slimefun remains optional.
+            }
         }
         this.slimefunGetById = getById;
         this.slimefunGetItem = getItem;
