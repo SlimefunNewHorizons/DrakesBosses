@@ -84,16 +84,16 @@ public final class BossArenaService implements Listener {
     }
 
     private StartResult startInternal(String type, Collection<Player> players, boolean group, boolean chargeEntry) {
-        if (players.isEmpty()) return failed("No hay jugadores para esta arena.");
-        if (!bosses.supportsBossType(type)) return failed("Ese jefe no existe o está desactivado.");
+        if (players.isEmpty()) return failed("There are no players for this arena.");
+        if (!bosses.supportsBossType(type)) return failed("That boss does not exist or is disabled.");
         World world = arenaWorld();
-        if (world == null) return failed("No se pudo preparar el mundo de jefes.");
+        if (world == null) return failed("The boss world could not be prepared.");
         if (players.stream().anyMatch(player -> byPlayer.containsKey(player.getUniqueId()))) {
-            return failed("Un integrante ya está en otra arena.");
+            return failed("A party member is already in another arena.");
         }
         String arenaBossType = canonicalBossType(type);
         if (!activeBossTypes.add(arenaBossType)) {
-            return failed("Ese jefe ya tiene una arena activa. Espera a que termine.");
+            return failed("That boss already has an active arena. Wait for it to finish.");
         }
         int cell = reserveCell();
         Location center = new Location(world, cell * CELL_SIZE + 0.5D, 65D, 0.5D);
@@ -106,13 +106,13 @@ public final class BossArenaService implements Listener {
             occupiedCells.remove(cell);
             activeBossTypes.remove(arenaBossType);
             clearFloor(center);
-            return failed("La arena falló antes de cobrar la entrada.");
+            return failed("The arena failed before the entry fee was charged.");
         }
         if (boss == null) {
             occupiedCells.remove(cell);
             activeBossTypes.remove(arenaBossType);
             clearFloor(center);
-            return failed("La creación del jefe fue cancelada antes de cobrar la entrada.");
+            return failed("Boss creation was cancelled before the entry fee was charged.");
         }
         EntryCharge charge = chargeEntry ? chargeEntry(type, players) : EntryCharge.free();
         if (!charge.success()) {
@@ -134,7 +134,7 @@ public final class BossArenaService implements Listener {
                 ids.add(player.getUniqueId());
                 byPlayer.put(player.getUniqueId(), boss.getEntity().getUniqueId());
                 player.setFallDistance(0);
-                player.sendTitle("§6⚔ §c" + boss.getDisplayName() + " §6⚔", "§7¡El combate ha comenzado!", 10, 45, 15);
+                player.sendTitle("§6⚔ §c" + boss.getDisplayName() + " §6⚔", "§7The battle has begun!", 10, 45, 15);
                 try {
                     player.playSound(center, Sound.EVENT_RAID_HORN, 1.5F, 0.9F);
                 } catch (Throwable ignored) {}
@@ -143,16 +143,16 @@ public final class BossArenaService implements Listener {
             if (challengeMultiplier > 1.0D) {
                 boss.applyArenaHealthMultiplier(challengeMultiplier);
                 for (Player player : players) {
-                    player.sendMessage("§5[BossArena] §dDesafío de élite activo: §fx"
+                    player.sendMessage("§5[BossArena] §dElite challenge active: §fx"
                             + String.format(java.util.Locale.ROOT, "%.0f", challengeMultiplier)
-                            + " §dde vida efectiva.");
+                            + " §deffective health.");
                 }
             }
             BossArenaSession session = new BossArenaSession(UUID.randomUUID(), boss.getEntity().getUniqueId(), arenaBossType,
                     center, group, Set.copyOf(ids), Map.copyOf(returnLocations), System.currentTimeMillis());
             byBoss.put(session.bossId(), session);
-            String notice = "§6[BossArena] §e" + players.iterator().next().getName() + " desafía a §c" + boss.getDisplayName()
-                    + "§e. Usa §f/bosswarp spectate " + players.iterator().next().getName() + " §epara mirar.";
+            String notice = "§6[BossArena] §e" + players.iterator().next().getName() + " challenges §c" + boss.getDisplayName()
+                    + "§e. Use §f/bosswarp spectate " + players.iterator().next().getName() + " §eto watch.";
             for (Player nearby : world.getPlayers()) {
                 if (nearby.getLocation().distanceSquared(center) <= 256.0D * 256.0D) nearby.sendMessage(notice);
             }
@@ -160,7 +160,7 @@ public final class BossArenaService implements Listener {
         } catch (RuntimeException exception) {
             plugin.getLogger().warning("[BossArena] Rollback de arena " + type + ": " + exception.getMessage());
             rollbackSpawn(boss, players, cell, center, arenaBossType, charge, returnLocations);
-            return failed("La arena no pudo inicializarse. Tu entrada fue reembolsada.");
+            return failed("The arena could not initialize. Your entry fee was refunded.");
         }
     }
 
@@ -230,7 +230,7 @@ public final class BossArenaService implements Listener {
         if (fee <= 0.0D) return EntryCharge.free();
         RegisteredServiceProvider<Economy> registration = Bukkit.getServicesManager().getRegistration(Economy.class);
         if (registration == null || registration.getProvider() == null) {
-            return EntryCharge.failed("La economía no está disponible; no se cobró ninguna entrada.");
+            return EntryCharge.failed("The economy is unavailable; no entry fee was charged.");
         }
         Economy economy = registration.getProvider();
         String bypass = plugin.getConfig().getString("boss-arena.entry-fees.free-permission", "");
@@ -238,15 +238,15 @@ public final class BossArenaService implements Listener {
         for (Player player : players) {
             if (!bypass.isBlank() && player.hasPermission(bypass)) continue;
             if (!economy.has(player, fee)) {
-                return EntryCharge.failed("§c" + player.getName() + " no tiene §e"
-                        + formatFee(fee) + " Dragmas§c para entrar.");
+                return EntryCharge.failed("§c" + player.getName() + " does not have §e"
+                        + formatFee(fee) + " Dragmas§c to enter.");
             }
         }
         for (Player player : players) {
             if (!bypass.isBlank() && player.hasPermission(bypass)) continue;
             if (!economy.withdrawPlayer(player, fee).transactionSuccess()) {
                 refund(economy, charged, fee);
-                return EntryCharge.failed("No se pudo cobrar la entrada. Todo cobro previo fue reembolsado.");
+                return EntryCharge.failed("The entry fee could not be charged. All previous charges were refunded.");
             }
             charged.add(player);
             plugin.getLogger().info("[BossArena] Entrada cobrada: " + player.getName() + " -> "
@@ -306,8 +306,8 @@ public final class BossArenaService implements Listener {
         spectators.put(viewer.getUniqueId(), new SpectatorReturn(boss, viewer.getLocation().clone(), viewer.getGameMode()));
         viewer.setGameMode(GameMode.SPECTATOR);
         viewer.teleport(session.center().clone().add(0, 18, 0));
-        viewer.sendTitle("§bModo Espectador", "§7Observando combate de §e" + participant.getName(), 10, 40, 15);
-        viewer.sendMessage("§6[BossArena] §7Estás observando a §e" + participant.getName() + "§7. Usa §f/bosswarp leave §7para salir.");
+        viewer.sendTitle("§bSpectator Mode", "§7Watching §e" + participant.getName() + "§7's battle", 10, 40, 15);
+        viewer.sendMessage("§6[BossArena] §7You are watching §e" + participant.getName() + "§7. Use §f/bosswarp leave §7to exit.");
         return true;
     }
 
@@ -317,7 +317,7 @@ public final class BossArenaService implements Listener {
         if (spectator != null) {
             player.setGameMode(spectator.gameMode());
             returnPlayer(player, spectator.origin());
-            player.sendMessage("§a[BossArena] Has salido del modo espectador.");
+            player.sendMessage("§a[BossArena] You left spectator mode.");
             return true;
         }
 
@@ -326,7 +326,7 @@ public final class BossArenaService implements Listener {
             BossArenaSession session = byBoss.get(bossId);
             if (session != null) {
                 returnPlayer(player, session.returnLocations().get(player.getUniqueId()));
-                player.sendMessage("§c[BossArena] Has abandonado el combate en la arena.");
+                player.sendMessage("§c[BossArena] You left the arena battle.");
                 boolean anyRemaining = false;
                 for (UUID pid : session.participants()) {
                     if (byPlayer.containsKey(pid)) {
@@ -373,8 +373,8 @@ public final class BossArenaService implements Listener {
             Player player = Bukkit.getPlayer(playerId);
             if (player != null) {
                 player.giveExp(expReward);
-                player.sendMessage("§a[BossArena] ¡Victoria! Has recibido §e" + expReward + " §ade experiencia.");
-                player.sendTitle("§a§l¡VICTORIA DIVINA!", "§eHas derrotado a " + bossName, 10, 55, 20);
+                player.sendMessage("§a[BossArena] Victory! You received §e" + expReward + " §aexperience.");
+                player.sendTitle("§a§lDIVINE VICTORY!", "§eYou defeated " + bossName, 10, 55, 20);
                 try {
                     player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.5F, 1.0F);
                 } catch (Throwable ignored) {}

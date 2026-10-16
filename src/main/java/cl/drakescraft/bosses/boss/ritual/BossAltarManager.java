@@ -101,13 +101,13 @@ public final class BossAltarManager implements Listener {
         long cooldownEnd = altarCooldowns.getOrDefault(playerId, 0L);
         if (now < cooldownEnd) {
             long remainingSec = (cooldownEnd - now) / 1000L;
-            player.sendMessage(ChatColor.RED + "El altar aún está canalizando energía residual. Espera " + remainingSec + "s.");
+            player.sendMessage(ChatColor.RED + "The altar is still channeling residual energy. Wait " + remainingSec + "s.");
             return;
         }
 
         // Validar presencia de velas, antorchas o pilares rituales alrededor
         if (!hasRitualSurroundings(clicked)) {
-            player.sendMessage(ChatColor.YELLOW + "El altar está incompleto. Coloca al menos 2 velas, antorchas o pilares alrededor para canalizar la energía.");
+            player.sendMessage(ChatColor.YELLOW + "The altar is incomplete. Place at least 2 candles, torches, or pillars around it to channel energy.");
             return;
         }
 
@@ -179,13 +179,13 @@ public final class BossAltarManager implements Listener {
                 String bossName = boss.getDisplayName();
                 summoner.sendTitle(
                         ChatColor.GOLD + "✦ " + bossName + " ✦",
-                        ChatColor.RED + "¡Ha respondido a tu ofrenda sagrada!",
+                        ChatColor.RED + "It answered your sacred offering!",
                         10, 50, 20
                 );
                 world.strikeLightningEffect(loc);
                 plugin.getLogger().info("[AltarRitual] " + summoner.getName() + " invocó a " + bossType + " en " + loc.toVector());
             } else {
-                summoner.sendMessage(ChatColor.RED + "La energía de la ofrenda se disipó sin despertar al Dios.");
+                summoner.sendMessage(ChatColor.RED + "The offering's energy faded without awakening the god.");
             }
         }, 30L);
     }
