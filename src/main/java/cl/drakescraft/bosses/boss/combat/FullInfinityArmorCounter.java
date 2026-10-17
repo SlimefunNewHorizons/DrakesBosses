@@ -72,8 +72,8 @@ public final class FullInfinityArmorCounter {
         player.getWorld().spawnParticle(Particle.REVERSE_PORTAL, player.getLocation().add(0, 1.0D, 0), 14, 0.3D, 0.5D, 0.3D, 0.04D);
         player.playSound(player.getLocation(), Sound.BLOCK_RESPAWN_ANCHOR_DEPLETE, 0.9F, 0.6F);
         player.sendTitle(
-                ChatColor.DARK_RED + "PODER DIVINO",
-                ChatColor.GOLD + "Tu infinidad no es nada frente a mi poder divino.",
+                ChatColor.DARK_RED + "DIVINE POWER",
+                ChatColor.GOLD + "Your infinity is nothing before my divine power.",
                 8,
                 50,
                 16);

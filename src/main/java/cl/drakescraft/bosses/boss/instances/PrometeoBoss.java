@@ -34,7 +34,7 @@ public class PrometeoBoss extends OdysseyBoss {
     private boolean hasCurse = false;
 
     public PrometeoBoss(LivingEntity entity) {
-        super(entity, "prometeo", "§e§l🔥 Prometeo §7§l- §eTitán del Fuego Robado", 700.0, BarColor.YELLOW, BarStyle.SEGMENTED_10);
+        super(entity, "prometeo", "§e§l🔥 Prometheus §7§l- §eTitan of Stolen Fire", 700.0, BarColor.YELLOW, BarStyle.SEGMENTED_10);
 
         var scaleAttr = entity.getAttribute(Attribute.SCALE);
         if (scaleAttr != null) scaleAttr.setBaseValue(1.8);

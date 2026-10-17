@@ -29,7 +29,7 @@ public final class LokiBoss extends OdysseyBoss {
     private static final String LOKI_HEAD_BASE64 = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmM2NzNjODE5ODVlMTQ5MTU4ZjZiMDYzZTZiZTA5MGFlZjU0MTUxZjBmM2FmZDdhODMyMjMwM2FiOTkyODBlOSJ9fX0=";
 
     public LokiBoss(LivingEntity entity) {
-        super(entity, "loki", "§a§lLoki §7§l- §aDios del Engaño", 1200.0, BarColor.GREEN, BarStyle.SEGMENTED_20);
+        super(entity, "loki", "§a§lLoki §7§l- §aGod of Deception", 1200.0, BarColor.GREEN, BarStyle.SEGMENTED_20);
 
         // Scale entity size slightly larger (1.2)
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);

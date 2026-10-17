@@ -58,9 +58,9 @@ public class SoulShieldSkill implements BossSkill {
             loc.getWorld().getNearbyEntities(loc, 25.0, 25.0, 25.0).forEach(e -> {
                 if (e instanceof Player p) {
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&c&l¡El Dios Corrupto invoca un Escudo de Almas! &7¡Destruye los Cristales de Ender para dañarlo!"));
-                    p.sendTitle(ChatColor.translateAlternateColorCodes('&', "&c&lESCUDO DE ALMAS"),
-                               ChatColor.translateAlternateColorCodes('&', "&7¡Destruye los Cristales!"), 10, 40, 10);
+                        "&c&lThe Corrupted God summons a Soul Shield! &7Destroy the End Crystals to damage it!"));
+                    p.sendTitle(ChatColor.translateAlternateColorCodes('&', "&c&lSOUL SHIELD"),
+                               ChatColor.translateAlternateColorCodes('&', "&7Destroy the Crystals!"), 10, 40, 10);
                 }
             });
         }

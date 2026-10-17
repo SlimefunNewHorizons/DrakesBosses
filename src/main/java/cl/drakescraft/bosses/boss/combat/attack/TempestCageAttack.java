@@ -37,7 +37,7 @@ public final class TempestCageAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = target.getLocation().clone();
-    soporte.telegraph(boss, "Prisión de tormenta", center, soporte.dustAereo(), Sound.ENTITY_WARDEN_SONIC_BOOM, () -> {
+    soporte.telegraph(boss, "Tempest Cage", center, soporte.dustAereo(), Sound.ENTITY_WARDEN_SONIC_BOOM, () -> {
         soporte.drawRing(center, 6.0D, soporte.dustAereo());
         center.getWorld().spawnParticle(Particle.GUST, center.clone().add(0, 1, 0), 18, 2.5, 1.2, 2.5, 0.08);
         for (Player player : soporte.playersNear(center, 6.0D)) {

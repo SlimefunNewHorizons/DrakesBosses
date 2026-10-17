@@ -38,7 +38,7 @@ public final class WarStompAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = boss.getEntity().getLocation().clone();
-    soporte.telegraph(boss, "Pisotón de guerra", center, soporte.dustTerrestre(), Sound.ENTITY_RAVAGER_ROAR, () -> {
+    soporte.telegraph(boss, "War Stomp", center, soporte.dustTerrestre(), Sound.ENTITY_RAVAGER_ROAR, () -> {
         center.getWorld().spawnParticle(Particle.BLOCK, center, 80, 4.0, 0.25, 4.0, 0.1,
                 center.clone().add(0, -1, 0).getBlock().getBlockData());
         center.getWorld().playSound(center, Sound.ENTITY_GENERIC_EXPLODE, 1.4F, 0.6F);

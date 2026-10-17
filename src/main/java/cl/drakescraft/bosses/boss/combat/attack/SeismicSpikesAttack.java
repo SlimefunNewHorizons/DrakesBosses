@@ -38,7 +38,7 @@ public final class SeismicSpikesAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = boss.getEntity().getLocation().clone();
-    soporte.telegraph(boss, "Púas sísmicas", center, soporte.dustTerrestre(), Sound.BLOCK_ANVIL_LAND, () -> {
+    soporte.telegraph(boss, "Seismic Spikes", center, soporte.dustTerrestre(), Sound.BLOCK_ANVIL_LAND, () -> {
         for (int point = 0; point < 16; point++) {
             double angle = Math.PI * 2.0D * point / 16.0D;
             Location spike = center.clone().add(Math.cos(angle) * 7.0D, 0.15D, Math.sin(angle) * 7.0D);

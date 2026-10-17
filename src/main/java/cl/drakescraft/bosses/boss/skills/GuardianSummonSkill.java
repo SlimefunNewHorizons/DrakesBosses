@@ -32,7 +32,7 @@ public class GuardianSummonSkill implements BossSkill {
             Location spawnLoc = loc.clone().add(offsetX, 0, offsetZ);
 
             Drowned guardian = (Drowned) loc.getWorld().spawnEntity(spawnLoc, EntityType.DROWNED);
-            guardian.setCustomName("§9§lGuardián de las Profundidades");
+            guardian.setCustomName("§9§lGuardian of the Deep");
             guardian.setCustomNameVisible(true);
             guardian.setRemoveWhenFarAway(true);
             guardian.setTarget(target);

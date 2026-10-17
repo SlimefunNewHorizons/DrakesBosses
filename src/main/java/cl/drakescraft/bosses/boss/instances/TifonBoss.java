@@ -33,7 +33,7 @@ public class TifonBoss extends OdysseyBoss {
     private boolean furyActive = false;
 
     public TifonBoss(LivingEntity entity) {
-        super(entity, "tifon", "§4§l🌋 Tifón §7§l- §4Padre de los Monstruos", 2000.0, BarColor.RED, BarStyle.SEGMENTED_20);
+        super(entity, "tifon", "§4§l🌋 Typhon §7§l- §4Father of Monsters", 2000.0, BarColor.RED, BarStyle.SEGMENTED_20);
 
         var dmgAttr = entity.getAttribute(Attribute.ATTACK_DAMAGE);
         if (dmgAttr != null) dmgAttr.setBaseValue(35.0);
@@ -122,7 +122,7 @@ public class TifonBoss extends OdysseyBoss {
         for (EntityType type : wave) {
             Location loc = center.clone().add(random.nextInt(8) - 4, 0, random.nextInt(8) - 4);
             org.bukkit.entity.Entity mob = center.getWorld().spawnEntity(loc, type);
-            mob.setCustomName("§4Engendro de Tifón");
+            mob.setCustomName("§4Typhon Spawn");
             if (mob instanceof org.bukkit.entity.Mob m && nearest != null) m.setTarget(nearest);
             if (mob instanceof LivingEntity le) le.setRemoveWhenFarAway(true);
         }

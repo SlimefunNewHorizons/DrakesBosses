@@ -28,7 +28,7 @@ public class DragonAncestralBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public DragonAncestralBoss(LivingEntity entity) {
-        super(entity, "dragon_ancestral", "§d§l🐉 Dragón Ancestral §7§l- §6Señor de los Cielos", 3500.0, BarColor.PINK, BarStyle.SEGMENTED_20);
+        super(entity, "dragon_ancestral", "§d§l🐉 Ancient Dragon §7§l- §6Lord of the Skies", 3500.0, BarColor.PINK, BarStyle.SEGMENTED_20);
 
         var dmgAttr = entity.getAttribute(Attribute.ATTACK_DAMAGE);
         if (dmgAttr != null) dmgAttr.setBaseValue(45.0);

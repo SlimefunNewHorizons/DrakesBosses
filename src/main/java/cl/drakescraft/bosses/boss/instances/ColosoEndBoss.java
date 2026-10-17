@@ -29,7 +29,7 @@ public class ColosoEndBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public ColosoEndBoss(LivingEntity entity) {
-        super(entity, "coloso_end", "§5§l🌌 Coloso del End §7§l- §dSeñor del Vacío", 1500.0, BarColor.PURPLE, BarStyle.SEGMENTED_20);
+        super(entity, "coloso_end", "§5§l🌌 End Colossus §7§l- §dLord of the Void", 1500.0, BarColor.PURPLE, BarStyle.SEGMENTED_20);
 
         var dmgAttr = entity.getAttribute(Attribute.ATTACK_DAMAGE);
         if (dmgAttr != null) dmgAttr.setBaseValue(40.0);
@@ -118,7 +118,7 @@ public class ColosoEndBoss extends OdysseyBoss {
         for (int i = 0; i < 4; i++) {
             Location loc = center.clone().add(random.nextInt(6) - 3, 0, random.nextInt(6) - 3);
             Endermite mite = (Endermite) center.getWorld().spawnEntity(loc, org.bukkit.entity.EntityType.ENDERMITE);
-            mite.setCustomName("§dParásito del Vacío");
+            mite.setCustomName("§dVoid Parasite");
             mite.setTarget(target);
             var scale = mite.getAttribute(Attribute.SCALE);
             if (scale != null) scale.setBaseValue(1.5);

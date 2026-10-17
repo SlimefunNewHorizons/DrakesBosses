@@ -37,7 +37,7 @@ public final class CyclonePrisonAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = target.getLocation().clone();
-    soporte.telegraph(boss, "Prisión ciclónica", center, soporte.dustAereo(), Sound.ENTITY_BREEZE_WIND_BURST, () -> {
+    soporte.telegraph(boss, "Cyclone Prison", center, soporte.dustAereo(), Sound.ENTITY_BREEZE_WIND_BURST, () -> {
         soporte.drawRing(center, 7.5D, soporte.dustAereo());
         center.getWorld().spawnParticle(Particle.CLOUD, center.clone().add(0, 1, 0), 80, 3.5, 1.5, 3.5, 0.08);
         for (Player player : soporte.playersNear(center, 7.5D)) {

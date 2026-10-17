@@ -22,7 +22,7 @@ public class PoseidonBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public PoseidonBoss(LivingEntity entity) {
-        super(entity, "poseidon", "§9§lPoseidón §7§l- §9Dios del Océano", 1200.0, BarColor.BLUE, BarStyle.SEGMENTED_12);
+        super(entity, "poseidon", "§9§lPoseidon §7§l- §9God of the Ocean", 1200.0, BarColor.BLUE, BarStyle.SEGMENTED_12);
 
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);
         if (scaleAttr != null) {

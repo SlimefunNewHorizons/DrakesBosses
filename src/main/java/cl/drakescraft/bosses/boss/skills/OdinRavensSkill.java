@@ -21,7 +21,7 @@ public final class OdinRavensSkill implements BossSkill {
         loc.getWorld().playSound(loc, Sound.ENTITY_PHANTOM_BITE, 1.0f, 0.7f);
         loc.getWorld().spawnParticle(Particle.LARGE_SMOKE, loc.clone().add(0, 1.0, 0), 20, 0.5, 0.5, 0.5, 0.05);
 
-        String[] ravens = {"§eHugin §7- §fCuervo de Odín", "§eMunin §7- §fCuervo de Odín"};
+        String[] ravens = {"§eHugin §7- §fOdin's Raven", "§eMunin §7- §fOdin's Raven"};
 
         for (String ravenName : ravens) {
             Vex raven = (Vex) loc.getWorld().spawnEntity(loc.clone().add(0, 2, 0), EntityType.VEX);

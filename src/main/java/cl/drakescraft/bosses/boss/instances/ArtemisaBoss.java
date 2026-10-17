@@ -28,7 +28,7 @@ public class ArtemisaBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public ArtemisaBoss(LivingEntity entity) {
-        super(entity, "artemisa", "§9§l🏹 Artemisa §7§l- §9Diosa de la Caza", 600.0, BarColor.BLUE, BarStyle.SEGMENTED_10);
+        super(entity, "artemisa", "§9§l🏹 Artemis §7§l- §9Goddess of the Hunt", 600.0, BarColor.BLUE, BarStyle.SEGMENTED_10);
 
         var scaleAttr = entity.getAttribute(Attribute.SCALE);
         if (scaleAttr != null) scaleAttr.setBaseValue(1.4);

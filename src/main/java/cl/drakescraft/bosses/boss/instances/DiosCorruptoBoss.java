@@ -33,7 +33,7 @@ public class DiosCorruptoBoss extends OdysseyBoss {
     private boolean shieldActivated = false;
 
     public DiosCorruptoBoss(LivingEntity entity) {
-        super(entity, "dios_corrupto", "§4§lDios Corrupto §7§l- §4El Caído", 2000.0, BarColor.PURPLE, BarStyle.SEGMENTED_20);
+        super(entity, "dios_corrupto", "§4§lCorrupted God §7§l- §4The Fallen", 2000.0, BarColor.PURPLE, BarStyle.SEGMENTED_20);
 
         // Scale entity size to make it look like a giant god (1.21+ attribute GENERIC_SCALE)
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);
@@ -45,7 +45,7 @@ public class DiosCorruptoBoss extends OdysseyBoss {
         ItemStack hadesHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) hadesHead.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName("§4Yelmo del Dios Corrupto");
+            meta.setDisplayName("§4Corrupted God's Helm");
             PlayerProfile profile = (PlayerProfile) Bukkit.createProfile(UUID.randomUUID());
             profile.setProperty(new ProfileProperty("textures", HADES_HEAD_BASE64));
             meta.setPlayerProfile(profile);

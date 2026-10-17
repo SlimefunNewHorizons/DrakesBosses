@@ -47,7 +47,7 @@ public final class GarouCosmicoBoss extends OdysseyBoss {
     private BukkitTask activeSequence;
 
     public GarouCosmicoBoss(LivingEntity entity) {
-        super(entity, "garou_cosmico", "§5§lGarou Cósmico §7§l- §dCazador de Héroes", 4200.0D, BarColor.PURPLE, BarStyle.SEGMENTED_20);
+        super(entity, "garou_cosmico", "§5§lCosmic Garou §7§l- §dHero Hunter", 4200.0D, BarColor.PURPLE, BarStyle.SEGMENTED_20);
 
         setAttribute(Attribute.ATTACK_DAMAGE, 42.0D);
         setAttribute(Attribute.ARMOR, 18.0D);

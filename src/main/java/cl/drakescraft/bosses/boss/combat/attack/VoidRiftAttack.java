@@ -37,7 +37,7 @@ public final class VoidRiftAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = target.getLocation().clone();
-    soporte.telegraph(boss, "Grieta del vacío", center, soporte.dustDistancia(), Sound.ENTITY_ENDERMAN_STARE, () -> {
+    soporte.telegraph(boss, "Void Rift", center, soporte.dustDistancia(), Sound.ENTITY_ENDERMAN_STARE, () -> {
         soporte.drawRing(center, 5.0D, soporte.dustDistancia());
         center.getWorld().spawnParticle(Particle.PORTAL, center.clone().add(0, 0.8, 0), 100, 2.0, 0.8, 2.0, 0.2);
         for (Player player : soporte.playersNear(center, 5.5D)) {

@@ -28,7 +28,7 @@ public class CerberoBoss extends OdysseyBoss {
     private int headsFallen = 0;
 
     public CerberoBoss(LivingEntity entity) {
-        super(entity, "cerbero", "§5§l🐕 Cerbero §7§l- §5Guardián del Inframundo", 900.0, BarColor.PURPLE, BarStyle.SEGMENTED_10);
+        super(entity, "cerbero", "§5§l🐕 Cerberus §7§l- §5Guardian of the Underworld", 900.0, BarColor.PURPLE, BarStyle.SEGMENTED_10);
 
         var scaleAttr = entity.getAttribute(Attribute.SCALE);
         if (scaleAttr != null) scaleAttr.setBaseValue(1.7);

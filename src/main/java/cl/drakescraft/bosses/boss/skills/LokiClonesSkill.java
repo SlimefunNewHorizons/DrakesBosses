@@ -36,7 +36,7 @@ public final class LokiClonesSkill implements BossSkill {
             spawnLoc.setY(spawnLoc.getWorld().getHighestBlockYAt(spawnLoc) + 1);
 
             Illusioner clone = (Illusioner) spawnLoc.getWorld().spawnEntity(spawnLoc, EntityType.ILLUSIONER);
-            clone.setCustomName("§aIlusión de Loki");
+            clone.setCustomName("§aLoki's Illusion");
             clone.setCustomNameVisible(true);
             clone.setTarget(target);
 

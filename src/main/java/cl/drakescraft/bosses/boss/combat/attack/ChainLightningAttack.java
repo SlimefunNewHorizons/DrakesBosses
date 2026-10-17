@@ -37,7 +37,7 @@ public final class ChainLightningAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location impact = target.getLocation().clone();
-    soporte.telegraph(boss, "Relámpago encadenado", impact, soporte.dustDistancia(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, () -> {
+    soporte.telegraph(boss, "Chain Lightning", impact, soporte.dustDistancia(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, () -> {
         List<Player> victims = soporte.playersNear(impact, 12.0D).stream().limit(4).toList();
         Location previous = boss.getEntity().getEyeLocation();
         for (Player victim : victims) {

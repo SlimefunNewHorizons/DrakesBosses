@@ -25,7 +25,7 @@ public class AresBoss extends OdysseyBoss {
     private boolean rageActivated = false;
 
     public AresBoss(LivingEntity entity) {
-        super(entity, "ares", "§c§lAres §7§l- §cDios de la Guerra", 1200.0, BarColor.RED, BarStyle.SEGMENTED_12);
+        super(entity, "ares", "§c§lAres §7§l- §cGod of War", 1200.0, BarColor.RED, BarStyle.SEGMENTED_12);
 
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);
         if (scaleAttr != null) {

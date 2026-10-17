@@ -31,7 +31,7 @@ public class HeimdallBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public HeimdallBoss(LivingEntity entity) {
-        super(entity, "heimdall", "§f§l🌈 Heimdall §7§l- §fGuardián del Bifröst", 800.0, BarColor.WHITE, BarStyle.SEGMENTED_10);
+        super(entity, "heimdall", "§f§l🌈 Heimdall §7§l- §fGuardian of the Bifröst", 800.0, BarColor.WHITE, BarStyle.SEGMENTED_10);
 
         var scaleAttr = entity.getAttribute(Attribute.SCALE);
         if (scaleAttr != null) scaleAttr.setBaseValue(1.5);

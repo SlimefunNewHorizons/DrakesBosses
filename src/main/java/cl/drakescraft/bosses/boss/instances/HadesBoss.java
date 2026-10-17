@@ -22,7 +22,7 @@ public class HadesBoss extends OdysseyBoss {
     private final Random random = new Random();
 
     public HadesBoss(LivingEntity entity) {
-        super(entity, "hades", "§5§lHades §7§l- §5Dios del Inframundo", 1500.0, BarColor.PURPLE, BarStyle.SEGMENTED_12);
+        super(entity, "hades", "§5§lHades §7§l- §5God of the Underworld", 1500.0, BarColor.PURPLE, BarStyle.SEGMENTED_12);
 
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);
         if (scaleAttr != null) {

@@ -23,7 +23,7 @@ public class ThorBoss extends OdysseyBoss {
     private boolean stormTriggered = false;
 
     public ThorBoss(LivingEntity entity) {
-        super(entity, "thor", "§6§lThor §7§l- §6Dios del Trueno", 1000.0, BarColor.YELLOW, BarStyle.SEGMENTED_10);
+        super(entity, "thor", "§6§lThor §7§l- §6God of Thunder", 1000.0, BarColor.YELLOW, BarStyle.SEGMENTED_10);
 
         // Scale entity size to make it large
         var scaleAttr = entity.getAttribute(org.bukkit.attribute.Attribute.SCALE);

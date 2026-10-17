@@ -37,7 +37,7 @@ public final class VortexPullAttack implements BossAttack {
     public void execute(BossCombatSupport soporte, OdysseyBoss boss, Player target) {
 
     Location center = boss.getEntity().getLocation().clone();
-    soporte.telegraph(boss, "Vórtice de cadenas", center, soporte.dustTerrestre(), Sound.BLOCK_CHAIN_PLACE, () -> {
+    soporte.telegraph(boss, "Chain Vortex", center, soporte.dustTerrestre(), Sound.BLOCK_CHAIN_PLACE, () -> {
         center.getWorld().spawnParticle(Particle.WITCH, center.clone().add(0, 1, 0), 65, 4.5, 1.0, 4.5, 0.12);
         for (Player player : soporte.playersNear(center, 10.0D)) {
             Vector pull = center.toVector().subtract(player.getLocation().toVector());
