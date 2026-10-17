@@ -619,13 +619,10 @@ public class BossManager implements Listener {
             return;
         }
 
-        String title = isSpawn ? "⚔️ ¡Jefe Mítico Invocado!" : "💀 ¡Jefe Mítico Derrotado!";
+        String title = isSpawn ? "⚔️ Mythical Boss Summoned!" : "💀 Mythical Boss Defeated!";
         String desc = isSpawn
-                ? "El jefe **" + ChatColor.stripColor(boss.getDisplayName()) + "** ha despertado en las coordenadas: " +
-                  "`X: " + boss.getEntity().getLocation().getBlockX() +
-                  ", Y: " + boss.getEntity().getLocation().getBlockY() +
-                  ", Z: " + boss.getEntity().getLocation().getBlockZ() + "`."
-                : "El jefe **" + ChatColor.stripColor(boss.getDisplayName()) + "** fue derrotado por **" + killer.getName() + "**.";
+                ? "A mythical boss has awakened. Find it in-game to begin the encounter."
+                : "A mythical boss was defeated.";
         int color = isSpawn ? 16753920 : 3066993; // Orange for spawn, Green for death
 
         String json = "{\"username\":\"DrakesBosses Mitología\",\"embeds\":[{\"title\":\"" + title + "\",\"description\":\""

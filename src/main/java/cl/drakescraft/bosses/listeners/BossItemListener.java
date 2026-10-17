@@ -629,21 +629,21 @@ public final class BossItemListener implements Listener {
 
     private String abilityName(String type) {
         return switch (type) {
-            case "loki_dagger" -> "Salto de Loki";
-            case "odin_spear" -> "Sentencia de Odín";
-            case "mjolnir" -> "Pulso de Thor";
-            case "ares_blade" -> "Furia de Ares";
-            case "ares_shield" -> "Égida de Ares";
-            case "hades_scythe" -> "Cosecha de Hades";
-            case "poseidon_trident" -> "Marea de Poseidón";
-            case "zeus_mace" -> "Juicio de Zeus";
-            case "gjallarhorn" -> "Llamado de Gjallarhorn";
-            case "hydra_fang" -> "Veneno de Hidra";
-            case "artemis_bow" -> "Marca de Artemisa";
-            case "tifon_claw" -> "Salto de Tifón";
-            case "polifemo_club" -> "Terremoto de Polifemo";
-            case "corrupted_god_blade" -> "Nova Corrupta";
-            default -> "Habilidad";
+            case "loki_dagger" -> "Loki's Leap";
+            case "odin_spear" -> "Odin's Judgment";
+            case "mjolnir" -> "Thor's Pulse";
+            case "ares_blade" -> "Ares' Fury";
+            case "ares_shield" -> "Ares' Aegis";
+            case "hades_scythe" -> "Hades' Harvest";
+            case "poseidon_trident" -> "Poseidon's Tide";
+            case "zeus_mace" -> "Zeus' Judgment";
+            case "gjallarhorn" -> "Gjallarhorn's Call";
+            case "hydra_fang" -> "Hydra Venom";
+            case "artemis_bow" -> "Artemis' Mark";
+            case "tifon_claw" -> "Typhon's Leap";
+            case "polifemo_club" -> "Polyphemus' Quake";
+            case "corrupted_god_blade" -> "Corrupted Nova";
+            default -> "Ability";
         };
     }
 

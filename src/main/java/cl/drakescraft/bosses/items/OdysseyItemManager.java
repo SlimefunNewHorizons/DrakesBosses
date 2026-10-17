@@ -83,7 +83,7 @@ public final class OdysseyItemManager {
                 "&a&l✦ Cetro de la Ilusión de Loki",
                 "loki_scepter",
                 "&8▸ Arma Mítica de Loki",
-                "&7El canalizador de la magia del engaño.",
+                "&7Channels the magic of deception.",
                 "&7Tejido con hechizos de los Jotuns.",
                 "",
                 "&2&lPROYECTIL MÁGICO &r&7— Click Derecho",
@@ -111,7 +111,7 @@ public final class OdysseyItemManager {
                 "&e&l✦ Lanza Gungnir de Odín",
                 "odin_spear",
                 "&8▸ Arma Mítica de Odín",
-                "&7La lanza sagrada del Padre de Todo.",
+                "&7The Allfather's sacred spear.",
                 "&7Forjada por los enanos, nunca falla su blanco.",
                 "",
                 "&e&lFURIA DEL TRUENO &r&7— Cada lanzamiento",
@@ -137,7 +137,7 @@ public final class OdysseyItemManager {
                 "&e&l👁 Yelmo de la Sabiduría de Odín",
                 "odin_helmet",
                 "&8▸ Armadura Mítica de Odín",
-                "&7El casco del mismísimo Padre de Todo.",
+                "&7The Allfather's own helm.",
                 "&7Otorga la visión de los cuervos Huginn y Muninn.",
                 "",
                 "&e&lOJO DE ODÍN &r&7— Visión Nocturna",
@@ -227,7 +227,7 @@ public final class OdysseyItemManager {
     public static ItemStack createMjolnir() {
         ItemStack item = createBaseItem(
                 Material.MACE,
-                "&6&l⚡ Mjolnir &r&7[El Martillo del Trueno]",
+                "&6&l⚡ Mjolnir &r&7[Hammer of Thunder]",
                 "mjolnir",
                 "&8▸ Arma Mítica de Thor",
                 "&7Forjado por los enanos de Nidavellir",
@@ -283,7 +283,7 @@ public final class OdysseyItemManager {
                 "&c&l🛡 Escudo Espartano de Ares",
                 "ares_shield",
                 "&8▸ Armadura Mítica de Ares",
-                "&7El escudo de los guerreros más feroces.",
+                "&7The shield of the fiercest warriors.",
                 "",
                 "&c&lBLOQUEO PERFECTO &r&7— Refleja el 20%",
                 "&7del daño bloqueado al atacante."
@@ -305,7 +305,7 @@ public final class OdysseyItemManager {
                 "&5&l☠ Guadaña del Inframundo &r&7[Segadora de Almas]",
                 "hades_scythe",
                 "&8▸ Arma Mítica de Hades",
-                "&7La herramienta del cosechador de almas.",
+                "&7The reaper's tool.",
                 "&7Cada golpe drena la vida de la víctima.",
                 "",
                 "&5&lDRENAJE DE ALMA &r&7— Roba 3♥ de vida",
@@ -361,7 +361,7 @@ public final class OdysseyItemManager {
                 "&e&l⚡ Rayo de Zeus &r&7[Padre de los Dioses]",
                 "zeus_mace",
                 "&8▸ Arma Mítica de Zeus",
-                "&7El rayo definitivo forjado por los Cíclopes",
+                "&7The ultimate lightning forged by the Cyclopes.",
                 "&7en el taller secreto del Olimpo.",
                 "",
                 "&e&lTORMENTA DIVINA &r&7— Al golpear invoca",
@@ -391,7 +391,7 @@ public final class OdysseyItemManager {
                 "&f&l✦ Gjallarhorn &r&7[Cuerno del Bifröst]",
                 "gjallarhorn",
                 "&8▸ Arma Mítica de Heimdall",
-                "&7El cuerno que anuncia el Ragnarök.",
+                "&7The horn that heralds Ragnarok.",
                 "",
                 "&f&lECO DEL BIFRÖST &r&7— Golpea con la fuerza",
                 "&7de los nueve mundos.",
@@ -476,7 +476,7 @@ public final class OdysseyItemManager {
                 "&5&l🐕 Piel de Cerbero",
                 "cerbero_hide",
                 "&8▸ Armadura Mítica de Cerbero",
-                "&7La coraza del guardián del Inframundo.",
+                "&7The armor of the Underworld's guardian.",
                 "",
                 "&6&lPROTECTION XV — THORNS VIII — FIRE PROT X");
         ItemMeta meta = item.getItemMeta();
@@ -523,7 +523,7 @@ public final class OdysseyItemManager {
                 "&4&l🌋 Garra de Tifón",
                 "tifon_claw",
                 "&8▸ Arma Mítica de Tifón",
-                "&7La garra del padre de todos los monstruos.",
+                "&7The claw of the father of all monsters.",
                 "",
                 "&c&lFURIA PRIMORDIAL &r&7— Fire Aspect V",
                 "",
@@ -567,7 +567,7 @@ public final class OdysseyItemManager {
                 "&6&l🔥 Llama Eterna de Prometeo",
                 "prometeo_flame",
                 "&8▸ Reliquia Mítica de Prometeo",
-                "&7El fuego robado a los dioses para los mortales.",
+                "&7Fire stolen from the gods for mortals.",
                 "",
                 "&e&lCHISPA DIVINA &r&7— Click derecho: quema",
                 "&7a los enemigos cercanos durante 5 segundos.");
@@ -701,13 +701,13 @@ public final class OdysseyItemManager {
         String capitalized = bossId.substring(0, 1).toUpperCase() + bossId.substring(1).toLowerCase();
         ItemStack item = createBaseItem(
                 Material.FIRE_CHARGE,
-                "&d&l⚡ Invocador de " + capitalized,
+                "&d&l⚡ " + capitalized + " Summoner",
                 "summoner_" + bossId.toLowerCase(),
-                "&8▸ Invocador de Jefe Mítico",
-                "&7Haz clic derecho en el suelo para invocar",
-                "&7al jefe ancestral &b" + capitalized.toUpperCase() + "&7.",
+                "&8▸ Mythical Boss Summoner",
+                "&7Right-click the ground to summon",
+                "&7the ancient boss &b" + capitalized.toUpperCase() + "&7.",
                 "",
-                "&d&l¡ATENCIÓN! &7Su ira sacudirá el servidor."
+                "&d&lWARNING! &7Its wrath will shake the server."
         );
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
