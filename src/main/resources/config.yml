@@ -3,7 +3,7 @@
 
 discord:
   enabled: true
-  webhook-url: "REPLACE_ME"
+  webhook-url: "__REDACTED__"
 
 integrations:
   diosesdrakes:
