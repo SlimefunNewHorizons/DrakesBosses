@@ -67,11 +67,7 @@ public abstract class OdysseyBoss {
         entity.setRemoveWhenFarAway(false);
 
         // Health attributes
-        var healthAttr = entity.getAttribute(Attribute.MAX_HEALTH);
-        if (healthAttr != null) {
-            this.maxHealth = applyMaxHealthWithinServerLimit(healthAttr, this.maxHealth);
-        }
-        entity.setHealth(this.maxHealth);
+        this.maxHealth = applyMaxHealth(entity, this.maxHealth);
 
         // Tag the entity with persistent data
         NamespacedKey bossKey = new NamespacedKey(DrakesBosses.getInstance(), "boss_type");
@@ -378,12 +374,8 @@ public abstract class OdysseyBoss {
     public void applyArenaPowerMultiplier(double multiplier) {
         arenaPowerMultiplier = Math.clamp(multiplier, 1.0D, 5.0D);
         double desiredHealth = maxHealth * arenaPowerMultiplier;
-        var attribute = entity.getAttribute(Attribute.MAX_HEALTH);
-        double appliedHealth = attribute == null
-                ? Math.min(desiredHealth, maxHealth)
-                : applyMaxHealthWithinServerLimit(attribute, desiredHealth);
+        double appliedHealth = applyMaxHealth(entity, desiredHealth);
         maxHealth = appliedHealth;
-        entity.setHealth(maxHealth);
         // Lo que el atributo no acepta no se pierde: se cobra como absorcion de dano
         // para que la arena de grupo conserve su dificultad en cualquier servidor.
         applyArenaHealthMultiplier(MaxHealthLimit.compensationDivider(desiredHealth, appliedHealth));
@@ -393,6 +385,55 @@ public abstract class OdysseyBoss {
     public void applyArenaHealthMultiplier(double multiplier) {
         double factor = Math.clamp(multiplier, 1.0D, 1_000_000.0D);
         arenaHealthDamageDivider = Math.clamp(arenaHealthDamageDivider * factor, 1.0D, 1_000_000.0D);
+    }
+
+    /**
+     * Asigna la vida maxima y actual de la entidad sin pasarse del techo del servidor
+     * ni de la configuracion de atributos (ej. spigot.yml maxHealth.max).
+     *
+     * Devuelve el valor realmente aplicado.
+     */
+    private static double applyMaxHealth(LivingEntity entity, double desired) {
+        var attribute = entity.getAttribute(Attribute.MAX_HEALTH);
+        double applied = desired;
+        if (attribute != null) {
+            applied = applyMaxHealthWithinServerLimit(attribute, desired);
+        }
+        try {
+            try {
+                double maxPossible = entity.getMaxHealth();
+                if (maxPossible > 0.0D && applied > maxPossible) {
+                    applied = maxPossible;
+                    if (attribute != null) {
+                        try { attribute.setBaseValue(applied); } catch (Exception ignored) {}
+                    }
+                }
+            } catch (Exception ignored) {}
+
+            entity.setHealth(applied);
+            return applied;
+        } catch (IllegalArgumentException rejected) {
+            double ceiling = MaxHealthLimit.ceilingFromMessage(rejected.getMessage());
+            if (ceiling > 0.0D) {
+                try {
+                    if (attribute != null) {
+                        try { attribute.setBaseValue(ceiling); } catch (Exception ignored) {}
+                    }
+                    entity.setHealth(ceiling);
+                    return ceiling;
+                } catch (IllegalArgumentException ignored) {}
+            }
+            try {
+                double fallback = Math.max(1.0D, Math.min(applied, entity.getMaxHealth()));
+                if (attribute != null) {
+                    try { attribute.setBaseValue(fallback); } catch (Exception ignored) {}
+                }
+                entity.setHealth(fallback);
+                return fallback;
+            } catch (Exception fallbackEx) {
+                return entity.getHealth();
+            }
+        }
     }
 
     /**
