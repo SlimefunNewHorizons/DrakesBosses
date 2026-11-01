@@ -16,6 +16,13 @@ class MaxHealthLimitTest {
     }
 
     @Test
+    @DisplayName("lee el techo del rechazo de Paper cuando spigot limita maxHealth a 1024")
+    void leeElTechoDeSpigot1024() {
+        String paper = "Health value (4000.0) must be between 0 and 1024.0. (attribute base value: 4000.0)";
+        assertEquals(1024.0D, MaxHealthLimit.ceilingFromMessage(paper));
+    }
+
+    @Test
     @DisplayName("un mensaje sin techo declarado no inventa un limite")
     void mensajeSinTechoDevuelveNegativo() {
         assertTrue(MaxHealthLimit.ceilingFromMessage("valor invalido") < 0.0D);
