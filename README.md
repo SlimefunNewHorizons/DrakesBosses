@@ -4,6 +4,8 @@
 > **Créditos y licencia.** Port y mantenimiento por [JackStar6677-1](https://github.com/JackStar6677-1) y [DrakesCraft Labs](https://github.com/SlimefunNewHorizons). Autores originales: [JackStar6677](https://github.com/JackStar6677), JackStar (plugin.yml). Licencia original: **Other**. Detalle en [docs/UPSTREAM_ATTRIBUTION.md](docs/UPSTREAM_ATTRIBUTION.md).
 <!-- credits:end -->
 
+> **Branches / Ramas.** `main`: Paper/Purpur 1.21.11 (Java 21). `port-26x`: Paper/Purpur 26.x (production: Purpur 26.2, Java 25). If another section of this README says otherwise, this note prevails. / Si otra seccion de este README dice otra cosa, prevalece esta nota.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/SlimefunNewHorizons/DrakesBosses/main/banner.svg" width="100%" alt="DRAKES BOSSES animated banner" />
 </p>
